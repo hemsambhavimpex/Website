@@ -15,7 +15,7 @@ const Products = () => {
     <div data-testid="products-page">
       <PageHero
         id="products-hero"
-        overline="Export Catalog — MOQ 250 m per item"
+        overline="Export Catalog — MOQ varies per fabric (metres or kilos)"
         lines={[<>The velvet</>, <><em className="italic text-navy">manifest.</em></>]}
         right={
           <p>
@@ -64,7 +64,7 @@ const Products = () => {
                       <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-rust">
                         {CATEGORIES.find((c) => c.id === p.cat)?.code} · {p.variants}
                       </span>
-                      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-navy/50">MOQ 250 m</span>
+                      <span className={`font-mono text-[10px] uppercase tracking-[0.2em] ${p.stock === 'out' ? 'text-rust' : 'text-navy/50'}`}>{p.stock === 'out' ? 'Out of stock' : `MOQ ${p.specs?.moq || '250 m'}`}</span>
                     </div>
                     <h3 className="mt-3 font-serif text-2xl text-navy-dark">
                       <Link to={`/products/${p.slug}`} className="transition-colors hover:text-navy" data-testid={`product-title-link-${p.slug}`}>{p.name}</Link>

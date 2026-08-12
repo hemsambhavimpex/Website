@@ -8,9 +8,9 @@ const CHAPTERS = [
   {
     n: '01',
     title: 'The House of Velvet',
-    body: 'Shree JK Handloom — known in the trade as JK Velvet — opened its doors in Surat in 1990, in the heart of India’s textile capital. What began as a handloom house grew with the city: through the powerloom era, into synthetic suiting, and finally, decisively, into velvet. By the 2000s, velvet was no longer a line in our catalog. It was the catalog.',
-    img: IMAGES.loom,
-    caption: 'Fig. 01 — The loom floor, Surat',
+    body: 'Shree JK Handloom was founded in Surat in 1990 by Mr. Anil Doshi, beginning with handloom products before turning decisively to velvet in 2002 — first supplying India’s jewelry-box makers, then footwear and apparel houses. The JK Velvet brand, launched in 2015, made the specialisation official: one fabric family, mastered completely.',
+    img: '/assets/mill-story-1.jpg',
+    caption: 'Fig. 01 — The craft floor, Surat',
   },
   {
     n: '02',
@@ -23,8 +23,8 @@ const CHAPTERS = [
     n: '03',
     title: 'The Promise',
     body: 'Our mark says it plainly: two pillars — the world that supplies and the world that receives — held together by one strong, flexible connection. We exist to make the auspicious possible. That means mill-direct pricing you can audit, QC records that travel with the bale, and a reply to every serious inquiry within one business day.',
-    img: IMAGES.blackTexture,
-    caption: 'Fig. 03 — Pile inspection, final QC',
+    img: '/assets/mill-whatwedo.jpg',
+    caption: 'Fig. 03 — Final inspection, velvet lot',
   },
 ];
 
@@ -63,7 +63,7 @@ const About = () => (
           <div key={c.n} className={`grid items-center gap-10 lg:grid-cols-2 ${i % 2 === 1 ? 'lg:[&>*:first-child]:order-2' : ''}`} data-testid={`chapter-${c.n}`}>
             <Reveal>
               <div className="img-frame aspect-[4/3] border border-navy/20">
-                <img src={c.img} alt={c.caption} loading="lazy" />
+                <img src={c.img.startsWith('/') ? c.img : c.img} alt={c.caption} loading="lazy" />
                 <div className="absolute inset-0 bg-navy/20 mix-blend-multiply" />
               </div>
               <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.22em] text-navy/60">{c.caption}</p>

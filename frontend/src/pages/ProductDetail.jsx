@@ -47,7 +47,7 @@ const ProductDetail = () => {
                 <span>·</span>
                 <span>{product.variants}</span>
                 <span>·</span>
-                <span>MOQ 250 m</span>
+                <span>{product.stock === 'out' ? 'Currently out of stock' : `MOQ ${product.specs?.moq || '250 m'}`}</span>
               </div>
             </Reveal>
           </div>

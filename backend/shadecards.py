@@ -40,6 +40,19 @@ MILL_SPECS = {
     'micro-9000-velvet': ('Polyester base, micro knit', '130', '44 in & 54 in (112/137 cm)', '40-80 m folded rolls', '~300 m per parcel'),
     'lycra-velvet': ('Polyester-Lycra blend, woven', '125-220', '58-60 in (147-152 cm)', '~20 kg rolls', '40 kg (2 rolls)'),
     'holland-velvet': ('100% polyester, woven', '180', '56 in (142 cm)', '50-70 m rolls', '250 m'),
+    'furry-velvet': (None, '180 +/-10%', None, '25 m rolls', '250 m per colour / parcel'),
+    'galaxy-velvet': (None, '180 +/-10%', None, '70-90 m rolls', '~210 m per colour'),
+    'gota-design-velvet': (None, None, '44 in (112 cm)', 'Stock lots', '300 m per design/colour (stock); 900 m production lot'),
+    'korean-velvet': (None, '220 +/-10%', None, '50 m rolls', '150 m'),
+    'pvc-velvet': (None, None, None, '50 m rolls', '3 rolls per parcel per colour; 500 m custom colour'),
+    'taffeta-velvet': (None, None, '44 in (112 cm)', '60-100 m rolls', '300 m per parcel'),
+    'fd-full-dull-velvet': (None, None, '54 in (137 cm)', '70-100 m rolls', '1 roll'),
+    'kabul-velvet': (None, '110 +/-10%', '54 in (137 cm)', '30 m rolls', '15 rolls / 450 m'),
+    'mosha-velvet': (None, '220 +/-10%', None, '70-110 m rolls', '1 roll'),
+    'raising-velvet': (None, '115 +/-5%', None, '70-80 m rolls', '3 rolls per parcel; min 700 m per colour/design'),
+    'micro-11000-falcon': (None, '150 +/-5%', None, '40-60 m per than', '1,000 m per colour'),
+    'micro-velvet-99999': (None, None, None, None, '1,000 m per colour'),
+    'viscose-velvet': (None, None, None, None, '1,000 m per lot per colour'),
 }
 
 CATS = {
@@ -80,7 +93,12 @@ def build_shade_card(slug: str) -> bytes:
     code, cat_name, construction, composition, gsm, width = CATS[cat]
     mill = MILL_SPECS.get(slug)
     if mill:
-        composition, gsm, width, roll, moq = mill
+        m_comp, m_gsm, m_width, m_roll, m_moq = mill
+        composition = m_comp or composition
+        gsm = m_gsm or gsm
+        width = m_width or width
+        roll = m_roll or 'Per buyer spec'
+        moq = m_moq
     else:
         roll, moq = 'Per buyer spec', '250 metres per item'
 
