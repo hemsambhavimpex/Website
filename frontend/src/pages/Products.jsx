@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { PageHero, Reveal } from '../components/Reveal';
-import { PRODUCTS, CATEGORIES, END_USES, IMAGES, CONTACT } from '../data/catalog';
+import { PRODUCTS, CATEGORIES, END_USES, IMAGES, CONTACT, productImage } from '../data/catalog';
 
 const Products = () => {
   const [params] = useSearchParams();
@@ -53,10 +53,12 @@ const Products = () => {
             {shown.map((p, i) => (
               <Reveal key={p.slug} delay={(i % 3) * 0.08} className="bg-paper">
                 <article className="group flex h-full flex-col" data-testid={`product-card-${p.slug}`}>
-                  <div className="img-frame aspect-[4/3]">
-                    <img src={IMAGES[p.img]} alt={p.name} loading="lazy" />
-                    <div className="absolute inset-0 bg-navy/25 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-0" />
-                  </div>
+                  <Link to={`/products/${p.slug}`} data-testid={`product-detail-link-${p.slug}`}>
+                    <div className="img-frame aspect-[4/3]">
+                      <img src={productImage(p)} alt={p.name} loading="lazy" />
+                      <div className="absolute inset-0 bg-navy/25 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-0" />
+                    </div>
+                  </Link>
                   <div className="flex flex-1 flex-col p-6">
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-rust">
@@ -64,7 +66,9 @@ const Products = () => {
                       </span>
                       <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-navy/50">MOQ 250 m</span>
                     </div>
-                    <h3 className="mt-3 font-serif text-2xl text-navy-dark">{p.name}</h3>
+                    <h3 className="mt-3 font-serif text-2xl text-navy-dark">
+                      <Link to={`/products/${p.slug}`} className="transition-colors hover:text-navy" data-testid={`product-title-link-${p.slug}`}>{p.name}</Link>
+                    </h3>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-navy-dark/65">{p.desc}</p>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {p.uses.map((u) => (

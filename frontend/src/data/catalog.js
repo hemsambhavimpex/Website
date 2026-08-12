@@ -149,6 +149,47 @@ export const BLOG_POSTS = [
   },
 ];
 
+export const SPECS_BY_CAT = {
+  flocked: {
+    construction: 'Electrostatic flocked pile',
+    composition: 'Polyester pile on fabric / non-woven / PVC base',
+    gsm: '180–320 (base dependent)',
+    width: '44–58 in (112–147 cm)',
+  },
+  weaving: {
+    construction: 'Loom-woven pile',
+    composition: 'Polyester / poly-viscose blends',
+    gsm: '220–380',
+    width: '54–58 in (137–147 cm)',
+  },
+  knitting: {
+    construction: 'Micro-knitted pile',
+    composition: 'Polyester micro / viscose blends',
+    gsm: '180–300',
+    width: '58–60 in (147–152 cm)',
+  },
+};
+
+export const TRADE_TERMS = [
+  ['MOQ', '250 metres per item'],
+  ['Packing', 'Tube-rolled, polybagged; bale or buyer spec'],
+  ['Lead Time', '7–15 days ex-mill, shade dependent'],
+  ['Payment', 'Advance / LC at sight'],
+  ['Incoterms', 'EXW · FOB · CIF (on request)'],
+];
+
+export const SHADE_CARD = [
+  ['Midnight Navy', '#16243D'], ['Ink Blue', '#1A4C7D'], ['Maroon', '#5E1A24'],
+  ['Bottle Green', '#1E3D2F'], ['Rust', '#C85A17'], ['Camel', '#B08D57'],
+  ['Wine', '#6E2440'], ['Charcoal', '#2B2B2B'], ['Ivory', '#EDE6D6'],
+  ['Rosewood', '#7A3B3B'], ['Teal', '#14505C'], ['Jet Black', '#111111'],
+];
+
+// Real mill photography: drop files into /public/assets/products/<slug>.jpg
+// and they automatically replace the placeholder images below.
+export const productImage = (p) =>
+  p.photo ? `/assets/products/${p.photo}` : IMAGES[p.img];
+
 export const CONTACT = {
   email: 'contact@hemsambhavimpex.com',
   phone: '+91 94295 81000',
