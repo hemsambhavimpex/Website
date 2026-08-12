@@ -11,7 +11,7 @@ const TILES = [
   { img: P('pvc-velvet'), cat: 'flocked', label: 'Flocked — PVC base for footwear', aspect: 'aspect-[4/3]' },
   { img: P('gota-design-velvet'), cat: 'flocked', label: 'Flocked — Gota design, festive', aspect: 'aspect-[3/4]' },
   { img: P('holland-velvet'), cat: 'weaving', label: 'Weaving — Holland, 180 GSM', aspect: 'aspect-[4/3]' },
-  { img: P('fd-full-dull-velvet'), cat: 'weaving', label: 'Weaving — FD full-dull shades', aspect: 'aspect-[3/4]' },
+  { img: P('twilight'), cat: 'weaving', label: 'Weaving — Twilight, FD full-dull', aspect: 'aspect-[3/4]' },
   { img: P('raising-velvet'), cat: 'weaving', label: 'Weaving — Raised pile detail', aspect: 'aspect-square' },
   { img: P('lycra-velvet'), cat: 'weaving', label: 'Weaving — Lycra, embossed', aspect: 'aspect-[3/4]' },
   { img: P('micro-11000-falcon'), cat: 'knitting', label: 'Knitting — Micro 11000 “Falcon”', aspect: 'aspect-square' },

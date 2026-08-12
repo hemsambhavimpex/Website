@@ -19,7 +19,7 @@ PRODUCTS = {
     'non-woven-velvet': ('Non-Woven Velvet', 'flocked', 'Plain & Embossed'),
     'pvc-velvet': ('PVC Velvet', 'flocked', 'Plain'),
     'taffeta-velvet': ('Taffeta Velvet', 'flocked', 'Plain'),
-    'fd-full-dull-velvet': ('FD (Full Dull) Velvet', 'weaving', 'Woven'),
+    'twilight': ('Twilight', 'weaving', 'Woven - FD Full Dull'),
     'holland-velvet': ('Holland Velvet', 'weaving', 'Woven'),
     'kabul-velvet': ('Kabul Velvet', 'weaving', 'Woven'),
     'lycra-velvet': ('Lycra Velvet', 'weaving', 'Stretch'),
@@ -46,7 +46,7 @@ MILL_SPECS = {
     'korean-velvet': (None, '220 +/-10%', None, '50 m rolls', '150 m'),
     'pvc-velvet': (None, None, None, '50 m rolls', '3 rolls per parcel per colour; 500 m custom colour'),
     'taffeta-velvet': (None, None, '44 in (112 cm)', '60-100 m rolls', '300 m per parcel'),
-    'fd-full-dull-velvet': (None, None, '54 in (137 cm)', '70-100 m rolls', '1 roll'),
+    'twilight': (None, None, '54 in (137 cm)', '70-100 m rolls', '1 roll'),
     'kabul-velvet': (None, '110 +/-10%', '54 in (137 cm)', '30 m rolls', '15 rolls / 450 m'),
     'mosha-velvet': (None, '220 +/-10%', None, '70-110 m rolls', '1 roll'),
     'raising-velvet': (None, '115 +/-5%', None, '70-80 m rolls', '3 rolls per parcel; min 700 m per colour/design'),
@@ -94,13 +94,9 @@ def build_shade_card(slug: str) -> bytes:
     mill = MILL_SPECS.get(slug)
     if mill:
         m_comp, m_gsm, m_width, m_roll, m_moq = mill
-        composition = m_comp or composition
-        gsm = m_gsm or gsm
-        width = m_width or width
-        roll = m_roll or 'Per buyer spec'
-        moq = m_moq
+        composition, gsm, width, roll, moq = m_comp, m_gsm, m_width, m_roll, m_moq
     else:
-        roll, moq = 'Per buyer spec', '250 metres per item'
+        composition = gsm = width = roll = moq = None
 
     buf = io.BytesIO()
     c = canvas.Canvas(buf, pagesize=A4)
@@ -130,16 +126,23 @@ def build_shade_card(slug: str) -> bytes:
     c.setFont('Times-Bold', 30)
     c.drawString(M, y, name)
     mono(c, M, y - 20, f'{cat_name.upper()}  ·  {variants.upper()}  ·  EXPORT DIVISION OF JK VELVET, SURAT', 7, MUTED, spaced=False)
+    if slug == 'brasso-velvet':
+        mono(c, M, y - 34, 'Currently out of stock — inquire to reserve the next lot', 7.5, RUST)
 
     y -= 56
     specs = [
-        ('Construction', construction), ('Composition', composition),
-        ('GSM', gsm), ('Usable Width', width), ('Roll Length', roll), ('MOQ', moq),
+        ('Construction', construction),
+        composition and ('Composition', composition),
+        gsm and ('GSM', gsm),
+        width and ('Usable Width', width),
+        roll and ('Roll / Packing Length', roll),
+        moq and ('MOQ', moq),
         ('Packing', 'Tube-rolled / folded, polybagged; bale or buyer spec'),
         ('Lead Time', '7-15 days ex-mill, shade dependent'),
         ('Payment', 'Advance / LC at sight'),
         ('Incoterms', 'EXW / FOB / CIF (on request)'),
     ]
+    specs = [r for r in specs if r]
     c.setStrokeColor(NAVY)
     c.setLineWidth(0.6)
     for i, (k, v) in enumerate(specs):

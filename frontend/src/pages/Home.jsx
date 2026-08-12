@@ -14,7 +14,7 @@ const WHY = [
 
 const META = [
   ['EST.', '1990 — Surat'],
-  ['MOQ', '250 m / item'],
+  ['MOQ', 'From 150 m'],
   ['Range', '3 constructions'],
   ['Lanes', 'NP · BD · AE · UK +'],
 ];

@@ -113,7 +113,7 @@ const Products = () => {
             <div className="mt-12 flex flex-col items-start justify-between gap-6 border border-navy/15 bg-surface p-8 md:flex-row md:items-center">
               <p className="max-w-xl text-base text-navy-dark/75">
                 Don’t see your construction? We develop custom velvet — your colour, pile, base
-                and design — with the same {CONTACT.moq} MOQ.
+                and design — with mill-direct MOQs and the same export discipline.
               </p>
               <Link to="/contact" className="btn-primary group shrink-0" data-testid="products-custom-cta">
                 Start a Custom Brief <ArrowUpRight size={14} className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />

@@ -19,10 +19,19 @@ const ProductDetail = () => {
 
   const cat = CATEGORIES.find((c) => c.id === product.cat);
   const base = SPECS_BY_CAT[product.cat];
-  const specs = product.specs
-    ? { construction: base.construction, ...product.specs }
-    : { ...base, roll: 'Per buyer spec', moq: '250 metres per item' };
-  const isMillData = Boolean(product.specs);
+  const specs = product.specs || {};
+  const specRows = [
+    ['Construction', base.construction],
+    specs.composition && ['Composition', specs.composition],
+    specs.gsm && ['GSM', specs.gsm],
+    specs.width && ['Usable Width', specs.width],
+    specs.roll && ['Roll / Packing Length', specs.roll],
+    specs.moq && ['MOQ', specs.moq],
+    ['Packing', 'Tube-rolled / folded, polybagged; bale or buyer spec'],
+    ['Lead Time', '7–15 days ex-mill, shade dependent'],
+    ['Payment', 'Advance / LC at sight'],
+    ['Incoterms', 'EXW · FOB · CIF (on request)'],
+  ].filter(Boolean);
   const related = PRODUCTS.filter((p) => p.cat === product.cat && p.slug !== product.slug).slice(0, 3);
   const waText = encodeURIComponent(`Hello HemSambhav Impex — I’d like a quote for ${product.name} (${cat.name}). Quantity: `);
 
@@ -117,21 +126,10 @@ const ProductDetail = () => {
               <div className="mt-10 border border-navy/20" data-testid="product-specs-table">
                 <div className="border-b border-navy/20 bg-navy-ink px-6 py-3">
                   <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-paper/80">
-                    Specification Sheet — {isMillData ? 'Mill Data · jkvelvet.com' : 'Indicative'}
+                    Specification Sheet — Mill Data
                   </p>
                 </div>
-                {[
-                  ['Construction', specs.construction],
-                  ['Composition', specs.composition],
-                  ['GSM', specs.gsm],
-                  ['Usable Width', specs.width],
-                  ['Roll Length', specs.roll],
-                  ['MOQ', specs.moq],
-                  ['Packing', 'Tube-rolled / folded, polybagged; bale or buyer spec'],
-                  ['Lead Time', '7–15 days ex-mill, shade dependent'],
-                  ['Payment', 'Advance / LC at sight'],
-                  ['Incoterms', 'EXW · FOB · CIF (on request)'],
-                ].map(([k, v], i, arr) => (
+                {specRows.map(([k, v], i, arr) => (
                   <div key={k} className={`grid grid-cols-2 ${i < arr.length - 1 ? 'border-b border-navy/15' : ''}`} data-testid={`spec-${k.toLowerCase().replace(/\s/g, '-')}`}>
                     <p className="border-r border-navy/15 px-6 py-3.5 font-mono text-[10px] uppercase tracking-[0.2em] text-navy/60">{k}</p>
                     <p className="px-6 py-3.5 text-sm text-navy-dark">{v}</p>
@@ -139,10 +137,13 @@ const ProductDetail = () => {
                 ))}
               </div>
               <p className="mt-3 text-xs text-navy-dark/55">
-                {isMillData
-                  ? 'Specifications as published by JK Velvet. Final shade confirmed on the proforma invoice before production.'
-                  : 'Final GSM, width and shade are confirmed on the proforma invoice before production.'}
+                Only confirmed mill data is shown. Final shade and terms are fixed on the proforma invoice before production.
               </p>
+              {product.stock === 'out' && (
+                <p className="mt-4 border border-rust/40 bg-rust/10 px-4 py-3 font-mono text-[11px] uppercase tracking-[0.2em] text-rust" data-testid="out-of-stock-note">
+                  Currently out of stock — send an inquiry to reserve the next lot
+                </p>
+              )}
             </Reveal>
 
             <Reveal delay={0.2}>
