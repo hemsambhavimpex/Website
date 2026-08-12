@@ -1,11 +1,12 @@
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, ArrowUpRight, MessageSquare } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, Download, MessageSquare } from 'lucide-react';
 import { MaskedLines, Reveal } from '../components/Reveal';
 import { PRODUCTS, CATEGORIES, IMAGES, SPECS_BY_CAT, TRADE_TERMS, SHADE_CARD, CONTACT, productImage } from '../data/catalog';
 
 const ProductDetail = () => {
   const { slug } = useParams();
   const product = PRODUCTS.find((p) => p.slug === slug);
+  const API = process.env.REACT_APP_BACKEND_URL;
 
   if (!product) {
     return (
@@ -82,6 +83,14 @@ const ProductDetail = () => {
                   Screen shades are indicative only — a physical shade card is couriered on
                   request before order confirmation.
                 </p>
+                <a
+                  href={`${API}/api/shade-card/${product.slug}`}
+                  download
+                  className="btn-secondary group mt-6 w-full justify-center"
+                  data-testid="shade-card-download"
+                >
+                  <Download size={14} /> Download Printable Shade Card (PDF)
+                </a>
               </div>
             </Reveal>
           </div>

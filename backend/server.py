@@ -7,6 +7,8 @@ import asyncio
 import logging
 from pathlib import Path
 from pydantic import BaseModel, EmailStr
+from fastapi.responses import Response
+from shadecards import build_shade_card, PRODUCTS as SHADE_PRODUCTS
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -90,6 +92,18 @@ async def create_inquiry(inquiry: Inquiry):
     else:
         logger.info(f"Inquiry received (email delivery not configured): {inquiry.model_dump()}")
     return {"status": "success", "email_delivered": delivered}
+
+
+@api_router.get("/shade-card/{slug}")
+async def shade_card(slug: str):
+    if slug not in SHADE_PRODUCTS:
+        return Response(status_code=404)
+    pdf = await asyncio.to_thread(build_shade_card, slug)
+    return Response(
+        content=pdf,
+        media_type="application/pdf",
+        headers={"Content-Disposition": f'attachment; filename="HemSambhav-ShadeCard-{slug}.pdf"'},
+    )
 
 
 app.include_router(api_router)

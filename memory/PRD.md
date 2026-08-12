@@ -28,6 +28,7 @@ Navy-dominant palette (#1A4C7D + paper #F4F1EA + rust #C85A17), real uploaded lo
 - Product detail pages at /products/:slug for all 20 fabrics: indicative spec sheet (construction, composition, GSM, width, MOQ, packing, lead time, payment, Incoterms), 12-shade indicative digital shade card, prefilled quote + WhatsApp CTAs, related products (2026-08-12)
 - Floating WhatsApp button site-wide (wa.me/919429581000, prefilled message; per-product variant on detail pages) (2026-08-12)
 - Real-photo swap mechanism: drop JPGs named by slug into /app/frontend/public/assets/products/ and add `photo: '<slug>.jpg'` per product in catalog.js — productImage() helper already wired into cards, detail pages and related rails (2026-08-12)
+- Downloadable branded A4 shade-card PDFs per fabric: GET /api/shade-card/{slug} (reportlab, backend/shadecards.py) with spec table + 12 indicative shades; "Download Printable Shade Card (PDF)" button on every product detail page (2026-08-12)
 
 ## Backlog
 - P0: Add real RESEND_API_KEY (resend.com → API Keys) + verify hemsambhavimpex.com sending domain so emails actually reach contact@hemsambhavimpex.com; update SENDER_EMAIL to a verified domain address
