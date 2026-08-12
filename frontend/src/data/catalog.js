@@ -185,10 +185,12 @@ export const SHADE_CARD = [
   ['Rosewood', '#7A3B3B'], ['Teal', '#14505C'], ['Jet Black', '#111111'],
 ];
 
-// Real mill photography: drop files into /public/assets/products/<slug>.jpg
-// and they automatically replace the placeholder images below.
-export const productImage = (p) =>
-  p.photo ? `/assets/products/${p.photo}` : IMAGES[p.img];
+// Photos: local /assets/products/<slug>.jpg files, or admin-uploaded /api/uploads/* URLs
+export const productImage = (p) => {
+  if (!p.photo) return IMAGES[p.img] || IMAGES.fabricRack;
+  if (p.photo.startsWith('/api/') || p.photo.startsWith('http')) return p.photo;
+  return `/assets/products/${p.photo}`;
+};
 
 export const CONTACT = {
   email: 'contact@hemsambhavimpex.com',

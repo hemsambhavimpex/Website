@@ -3,7 +3,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { MaskedLines, Reveal } from '../components/Reveal';
 import { EditorialMarquee } from '../components/EditorialMarquee';
-import { IMAGES, CATEGORIES, MARKETS, END_USES, PRODUCTS, CONTACT } from '../data/catalog';
+import { IMAGES, CATEGORIES, MARKETS, END_USES, PRODUCTS as STATIC_PRODUCTS, CONTACT } from '../data/catalog';
+import { useProducts } from '../hooks/useProducts';
 
 const WHY = [
   { n: '01', title: 'Mill-direct, not middle-trade', desc: 'We are the export division of the manufacturer itself. Your fabric comes off JK Velvet’s own lines — no trader’s margin, no broken telephone between loom and loading bay.' },
@@ -20,6 +21,7 @@ const META = [
 ];
 
 const Home = () => {
+  const PRODUCTS = useProducts();
   const { scrollY } = useScroll();
   const heroImgY = useTransform(scrollY, [0, 900], [0, 140]);
   const bandY = useTransform(scrollY, [1600, 3200], [-80, 80]);

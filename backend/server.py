@@ -1,4 +1,6 @@
 from fastapi import FastAPI, APIRouter
+from fastapi.responses import Response
+from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -7,8 +9,8 @@ import asyncio
 import logging
 from pathlib import Path
 from pydantic import BaseModel, EmailStr
-from fastapi.responses import Response
-from shadecards import build_shade_card, PRODUCTS as SHADE_PRODUCTS
+from shadecards import build_shade_card
+import admin as admin_module
 
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
@@ -16,6 +18,7 @@ load_dotenv(ROOT_DIR / '.env')
 mongo_url = os.environ['MONGO_URL']
 client = AsyncIOMotorClient(mongo_url)
 db = client[os.environ['DB_NAME']]
+admin_module.init(db)
 
 app = FastAPI()
 api_router = APIRouter(prefix="/api")
@@ -96,9 +99,10 @@ async def create_inquiry(inquiry: Inquiry):
 
 @api_router.get("/shade-card/{slug}")
 async def shade_card(slug: str):
-    if slug not in SHADE_PRODUCTS:
+    product = await db.products.find_one({'slug': slug}, {'_id': 0})
+    if not product:
         return Response(status_code=404)
-    pdf = await asyncio.to_thread(build_shade_card, slug)
+    pdf = await asyncio.to_thread(build_shade_card, product)
     return Response(
         content=pdf,
         media_type="application/pdf",
@@ -107,6 +111,13 @@ async def shade_card(slug: str):
 
 
 app.include_router(api_router)
+app.include_router(admin_module.router, prefix="/api")
+app.mount("/api/uploads", StaticFiles(directory=Path(__file__).parent / "uploads"), name="uploads")
+
+
+@app.on_event("startup")
+async def startup_seed():
+    await admin_module.seed(db)
 
 app.add_middleware(
     CORSMiddleware,

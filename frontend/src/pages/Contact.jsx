@@ -4,7 +4,8 @@ import axios from 'axios';
 import { toast } from 'sonner';
 import { ArrowUpRight, Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react';
 import { PageHero, Reveal } from '../components/Reveal';
-import { PRODUCTS, CATEGORIES, END_USES, CONTACT } from '../data/catalog';
+import { PRODUCTS as STATIC_PRODUCTS, CATEGORIES, END_USES, CONTACT } from '../data/catalog';
+import { useProducts } from '../hooks/useProducts';
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -16,6 +17,7 @@ const Field = ({ label, id, children }) => (
 );
 
 const Contact = () => {
+  const PRODUCTS = useProducts();
   const [params] = useSearchParams();
   const [form, setForm] = useState({
     full_name: '',

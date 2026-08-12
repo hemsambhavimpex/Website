@@ -9,65 +9,11 @@ PAPER = HexColor('#F4F1EA')
 RUST = HexColor('#C85A17')
 MUTED = HexColor('#5B6B7D')
 
-PRODUCTS = {
-    'coco-velvet': ('Coco Velvet', 'flocked', 'Plain'),
-    'cloud-design-velvet': ('Cloud Design Velvet', 'flocked', 'Embossed design'),
-    'furry-velvet': ('Furry Velvet', 'flocked', 'High loft'),
-    'galaxy-velvet': ('Galaxy Velvet', 'flocked', 'Plain & Embossed'),
-    'gota-design-velvet': ('Gota Design Velvet', 'flocked', 'Design'),
-    'korean-velvet': ('Korean Velvet', 'flocked', 'Plain'),
-    'non-woven-velvet': ('Non-Woven Velvet', 'flocked', 'Plain & Embossed'),
-    'pvc-velvet': ('PVC Velvet', 'flocked', 'Plain'),
-    'taffeta-velvet': ('Taffeta Velvet', 'flocked', 'Plain'),
-    'twilight': ('Twilight', 'weaving', 'Woven - FD Full Dull'),
-    'holland-velvet': ('Holland Velvet', 'weaving', 'Woven'),
-    'kabul-velvet': ('Kabul Velvet', 'weaving', 'Woven'),
-    'lycra-velvet': ('Lycra Velvet', 'weaving', 'Stretch'),
-    'mosha-velvet': ('Mosha Velvet', 'weaving', 'Woven'),
-    'raising-velvet': ('Raising Velvet', 'weaving', 'Woven'),
-    'brasso-velvet': ('Brasso Velvet', 'knitting', 'Burn-out'),
-    'micro-11000-falcon': ('Micro 11000 (Falcon Velvet)', 'knitting', 'Micro knit'),
-    'micro-9000-velvet': ('Micro 9000 Velvet', 'knitting', 'Micro knit'),
-    'micro-velvet-99999': ('Micro Velvet 99999', 'knitting', 'Micro knit'),
-    'viscose-velvet': ('Viscose Velvet', 'knitting', 'Viscose blend'),
-}
-
-# Real mill data published on jkvelvet.com
-MILL_SPECS = {
-    'coco-velvet': ('Warp-knit polyester velvet', '170 +/-10%', '54 in (137 cm)', '25 m rolls', '250 m'),
-    'cloud-design-velvet': ('Custom base fabric, flocked', '150-300', '44 in & 56 in (112/142 cm)', '50 m rolls', '1,000 m (10,000 m custom design)'),
-    'non-woven-velvet': ('Flocked pile on non-woven base', '110', '60 in (152 cm)', '50 m rolls', '250 m per parcel (5 rolls)'),
-    'micro-9000-velvet': ('Polyester base, micro knit', '130', '44 in & 54 in (112/137 cm)', '40-80 m folded rolls', '~300 m per parcel'),
-    'lycra-velvet': ('Polyester-Lycra blend, woven', '125-220', '58-60 in (147-152 cm)', '~20 kg rolls', '40 kg (2 rolls)'),
-    'holland-velvet': ('100% polyester, woven', '180', '56 in (142 cm)', '50-70 m rolls', '250 m'),
-    'furry-velvet': (None, '180 +/-10%', None, '25 m rolls', '250 m per colour / parcel'),
-    'galaxy-velvet': (None, '180 +/-10%', None, '70-90 m rolls', '~210 m per colour'),
-    'gota-design-velvet': (None, None, '44 in (112 cm)', 'Stock lots', '300 m per design/colour (stock); 900 m production lot'),
-    'korean-velvet': (None, '220 +/-10%', None, '50 m rolls', '150 m'),
-    'pvc-velvet': (None, None, None, '50 m rolls', '3 rolls per parcel per colour; 500 m custom colour'),
-    'taffeta-velvet': (None, None, '44 in (112 cm)', '60-100 m rolls', '300 m per parcel'),
-    'twilight': (None, None, '54 in (137 cm)', '70-100 m rolls', '1 roll'),
-    'kabul-velvet': (None, '110 +/-10%', '54 in (137 cm)', '30 m rolls', '15 rolls / 450 m'),
-    'mosha-velvet': (None, '220 +/-10%', None, '70-110 m rolls', '1 roll'),
-    'raising-velvet': (None, '115 +/-5%', None, '70-80 m rolls', '3 rolls per parcel; min 700 m per colour/design'),
-    'micro-11000-falcon': (None, '150 +/-5%', None, '40-60 m per than', '1,000 m per colour'),
-    'micro-velvet-99999': (None, None, None, None, '1,000 m per colour'),
-    'viscose-velvet': (None, None, None, None, '1,000 m per lot per colour'),
-}
-
 CATS = {
-    'flocked': ('FLK', 'Flocked Velvet', 'Electrostatic flocked pile', 'Polyester pile on fabric / non-woven / PVC base', '180-320 (base dependent)', '44-58 in (112-147 cm)'),
-    'weaving': ('WVN', 'Weaving Velvet', 'Loom-woven pile', 'Polyester / poly-viscose blends', '220-380', '54-58 in (137-147 cm)'),
-    'knitting': ('KNT', 'Knitting Velvet', 'Micro-knitted pile', 'Polyester micro / viscose blends', '180-300', '58-60 in (147-152 cm)'),
+    'flocked': ('FLK', 'Flocked Velvet', 'Electrostatic flocked pile'),
+    'weaving': ('WVN', 'Weaving Velvet', 'Loom-woven pile'),
+    'knitting': ('KNT', 'Knitting Velvet', 'Micro-knitted pile'),
 }
-
-TRADE = [
-    ('MOQ', '250 metres per item'),
-    ('Packing', 'Tube-rolled, polybagged; bale or buyer spec'),
-    ('Lead Time', '7-15 days ex-mill, shade dependent'),
-    ('Payment', 'Advance / LC at sight'),
-    ('Incoterms', 'EXW / FOB / CIF (on request)'),
-]
 
 SHADES = [
     ('HS-01', 'Midnight Navy', '#16243D'), ('HS-02', 'Ink Blue', '#1A4C7D'),
@@ -88,15 +34,12 @@ def mono(c, x, y, text, size=7.5, color=MUTED, spaced=True):
     c.drawString(x, y, ' '.join(text.upper()) if spaced else text)
 
 
-def build_shade_card(slug: str) -> bytes:
-    name, cat, variants = PRODUCTS[slug]
-    code, cat_name, construction, composition, gsm, width = CATS[cat]
-    mill = MILL_SPECS.get(slug)
-    if mill:
-        m_comp, m_gsm, m_width, m_roll, m_moq = mill
-        composition, gsm, width, roll, moq = m_comp, m_gsm, m_width, m_roll, m_moq
-    else:
-        composition = gsm = width = roll = moq = None
+def build_shade_card(p: dict) -> bytes:
+    name = p['name']
+    cat = p.get('cat', 'flocked')
+    variants = p.get('variants', '')
+    specs = p.get('specs') or {}
+    code, cat_name, construction = CATS.get(cat, CATS['flocked'])
 
     buf = io.BytesIO()
     c = canvas.Canvas(buf, pagesize=A4)
@@ -126,33 +69,33 @@ def build_shade_card(slug: str) -> bytes:
     c.setFont('Times-Bold', 30)
     c.drawString(M, y, name)
     mono(c, M, y - 20, f'{cat_name.upper()}  ·  {variants.upper()}  ·  EXPORT DIVISION OF JK VELVET, SURAT', 7, MUTED, spaced=False)
-    if slug == 'brasso-velvet':
+    if p.get('stock') == 'out':
         mono(c, M, y - 34, 'Currently out of stock — inquire to reserve the next lot', 7.5, RUST)
 
     y -= 56
-    specs = [
+    rows = [
         ('Construction', construction),
-        composition and ('Composition', composition),
-        gsm and ('GSM', gsm),
-        width and ('Usable Width', width),
-        roll and ('Roll / Packing Length', roll),
-        moq and ('MOQ', moq),
+        specs.get('composition') and ('Composition', specs['composition']),
+        specs.get('gsm') and ('GSM', specs['gsm']),
+        specs.get('width') and ('Usable Width', specs['width']),
+        specs.get('roll') and ('Roll / Packing Length', specs['roll']),
+        specs.get('moq') and ('MOQ', specs['moq']),
         ('Packing', 'Tube-rolled / folded, polybagged; bale or buyer spec'),
         ('Lead Time', '7-15 days ex-mill, shade dependent'),
         ('Payment', 'Advance / LC at sight'),
         ('Incoterms', 'EXW / FOB / CIF (on request)'),
     ]
-    specs = [r for r in specs if r]
+    rows = [r for r in rows if r]
     c.setStrokeColor(NAVY)
     c.setLineWidth(0.6)
-    for i, (k, v) in enumerate(specs):
+    for i, (k, v) in enumerate(rows):
         ry = y - i * 22
         c.line(M, ry - 16, W - M, ry - 16)
         mono(c, M, ry - 10, k, 7, NAVY)
         c.setFillColor(INK)
         c.setFont('Helvetica', 9)
-        c.drawString(M + 170, ry - 10, v)
-    y = y - len(specs) * 22 - 26
+        c.drawString(M + 170, ry - 10, str(v)[:80])
+    y = y - len(rows) * 22 - 26
 
     mono(c, M, y, 'Indicative shade range', 7.5, RUST)
     y -= 14

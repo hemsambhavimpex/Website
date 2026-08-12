@@ -1,10 +1,12 @@
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight, Download, MessageSquare } from 'lucide-react';
 import { MaskedLines, Reveal } from '../components/Reveal';
-import { PRODUCTS, CATEGORIES, IMAGES, SPECS_BY_CAT, TRADE_TERMS, SHADE_CARD, CONTACT, productImage } from '../data/catalog';
+import { PRODUCTS as STATIC_PRODUCTS, CATEGORIES, IMAGES, SPECS_BY_CAT, TRADE_TERMS, SHADE_CARD, CONTACT, productImage } from '../data/catalog';
+import { useProducts } from '../hooks/useProducts';
 
 const ProductDetail = () => {
   const { slug } = useParams();
+  const PRODUCTS = useProducts();
   const product = PRODUCTS.find((p) => p.slug === slug);
   const API = process.env.REACT_APP_BACKEND_URL;
 

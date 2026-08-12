@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { PageHero, Reveal } from '../components/Reveal';
-import { PRODUCTS, CATEGORIES, END_USES, IMAGES, CONTACT, productImage } from '../data/catalog';
+import { PRODUCTS as STATIC_PRODUCTS, CATEGORIES, END_USES, CONTACT, productImage } from '../data/catalog';
+import { useProducts } from '../hooks/useProducts';
 
 const Products = () => {
   const [params] = useSearchParams();
+  const PRODUCTS = useProducts();
   const initial = CATEGORIES.some((c) => c.id === params.get('cat')) ? params.get('cat') : 'all';
   const [filter, setFilter] = useState(initial);
 
