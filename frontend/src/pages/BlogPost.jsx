@@ -1,14 +1,25 @@
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { MaskedLines, Reveal } from '../components/Reveal';
-import { BLOG_POSTS, IMAGES } from '../data/catalog';
+import { BLOG_POSTS as STATIC_POSTS, postImage } from '../data/catalog';
+import { usePosts } from '../hooks/usePosts';
 
 const fmt = (d) =>
   new Date(d).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
 
 const BlogPost = () => {
   const { slug } = useParams();
-  const post = BLOG_POSTS.find((p) => p.slug === slug) || BLOG_POSTS[0];
+  const BLOG_POSTS = usePosts();
+  const post = BLOG_POSTS.find((p) => p.slug === slug);
+
+  if (!post) {
+    return (
+      <div className="px-6 pt-44 pb-32 text-center" data-testid="post-not-found">
+        <p className="font-serif text-4xl text-navy-dark">This entry isn’t in the journal.</p>
+        <Link to="/blog" className="btn-primary mt-8 inline-flex" data-testid="post-not-found-back">Back to Journal</Link>
+      </div>
+    );
+  }
 
   return (
     <div data-testid="blog-post-page">
@@ -31,7 +42,7 @@ const BlogPost = () => {
         <div className="mx-auto max-w-4xl">
           <Reveal>
             <div className="img-frame aspect-[16/8] border border-navy/20">
-              <img src={IMAGES[post.img]} alt={post.title} />
+              <img src={postImage(post)} alt={post.title} />
               <div className="absolute inset-0 bg-navy/20 mix-blend-multiply" />
             </div>
           </Reveal>

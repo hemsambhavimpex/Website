@@ -97,10 +97,15 @@ def build_shade_card(p: dict) -> bytes:
         c.drawString(M + 170, ry - 10, str(v)[:80])
     y = y - len(rows) * 22 - 26
 
-    mono(c, M, y, 'Indicative shade range', 7.5, RUST)
+    mono(c, M, y, 'Indicative shade range' if not p.get('shades') else 'Shade range', 7.5, RUST)
     y -= 14
+    raw_shades = p.get('shades') or []
+    if raw_shades:
+        shades = [(f'HS-{i+1:02d}', s.get('name', ''), s.get('hex', '#888888')) for i, s in enumerate(raw_shades[:18])]
+    else:
+        shades = SHADES
     cols, sw, sh, gapx, gapy = 6, 62, 62, 10.5, 34
-    for i, (scode, sname, hexv) in enumerate(SHADES):
+    for i, (scode, sname, hexv) in enumerate(shades):
         col, row = i % cols, i // cols
         x = M + col * (sw + gapx)
         sy = y - row * (sh + gapy) - sh

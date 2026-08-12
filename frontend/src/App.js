@@ -16,6 +16,7 @@ import BlogPost from '@/pages/BlogPost';
 import Contact from '@/pages/Contact';
 import Admin from '@/pages/Admin';
 import { ProductsProvider } from '@/hooks/useProducts';
+import { PostsProvider } from '@/hooks/usePosts';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -44,6 +45,7 @@ function App() {
     <div className="grain min-h-screen bg-paper">
       <BrowserRouter>
         <ProductsProvider>
+        <PostsProvider>
         <ScrollToTop />
         <Navbar />
         <main>
@@ -63,6 +65,7 @@ function App() {
         <Footer />
         <WhatsAppFloat />
         <Toaster position="bottom-right" toastOptions={{ style: { borderRadius: 0, border: '1px solid #1A4C7D', background: '#FDFCFB', color: '#0D2A47' } }} />
+        </PostsProvider>
         </ProductsProvider>
       </BrowserRouter>
     </div>

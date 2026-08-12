@@ -192,6 +192,9 @@ export const productImage = (p) => {
   return `/assets/products/${p.photo}`;
 };
 
+export const postImage = (p) =>
+  p.img && (p.img.startsWith('/') || p.img.startsWith('http')) ? p.img : IMAGES[p.img] || IMAGES.heroVelvet;
+
 export const CONTACT = {
   email: 'contact@hemsambhavimpex.com',
   phone: '+91 94295 81000',

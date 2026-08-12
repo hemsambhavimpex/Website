@@ -20,6 +20,7 @@ const ProductDetail = () => {
   }
 
   const cat = CATEGORIES.find((c) => c.id === product.cat);
+  const shades = product.shades?.length ? product.shades.map((s) => [s.name, s.hex]) : SHADE_CARD;
   const base = SPECS_BY_CAT[product.cat];
   const specs = product.specs || {};
   const specRows = [
@@ -83,10 +84,12 @@ const ProductDetail = () => {
               <div className="mt-12 border border-navy/20 bg-surface p-7" data-testid="shade-card">
                 <div className="flex items-baseline justify-between">
                   <h3 className="font-serif text-2xl text-navy-dark">Digital Shade Card</h3>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-navy/50">Indicative</span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-navy/50">
+                    {product.shades?.length ? 'Mill range' : 'Indicative'}
+                  </span>
                 </div>
                 <div className="mt-5 grid grid-cols-4 gap-px border border-navy/15 bg-navy/15 sm:grid-cols-6">
-                  {SHADE_CARD.map(([name, hex], i) => (
+                  {shades.map(([name, hex], i) => (
                     <div key={name} className="group bg-surface" data-testid={`shade-${i + 1}`}>
                       <div className="aspect-square transition-transform duration-300 group-hover:scale-[1.04]" style={{ backgroundColor: hex }} />
                       <p className="px-2 pt-1.5 font-mono text-[9px] uppercase tracking-[0.12em] text-navy/70">HS-{String(i + 1).padStart(2, '0')}</p>

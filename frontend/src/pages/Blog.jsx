@@ -1,12 +1,15 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { PageHero, Reveal } from '../components/Reveal';
-import { BLOG_POSTS } from '../data/catalog';
+import { BLOG_POSTS as STATIC_POSTS } from '../data/catalog';
+import { usePosts } from '../hooks/usePosts';
 
 const fmt = (d) =>
   new Date(d).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
 
-const Blog = () => (
+const Blog = () => {
+  const BLOG_POSTS = usePosts();
+  return (
   <div data-testid="blog-page">
     <PageHero
       id="blog-hero"
@@ -47,6 +50,7 @@ const Blog = () => (
       </div>
     </section>
   </div>
-);
+  );
+};
 
 export default Blog;

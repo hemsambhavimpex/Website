@@ -60,6 +60,7 @@ async def require_admin(request: Request):
 async def seed(db):
     await db.users.create_index('email', unique=True)
     await db.products.create_index('slug', unique=True)
+    await db.posts.create_index('slug', unique=True)
     await db.login_attempts.create_index('identifier')
 
     email = os.environ['ADMIN_EMAIL']
@@ -81,6 +82,14 @@ async def seed(db):
                 p['updated_at'] = datetime.now(timezone.utc)
             await db.products.insert_many(products)
 
+    if await db.posts.count_documents({}) == 0:
+        posts_file = Path(__file__).parent / 'seed_posts.json'
+        if posts_file.exists():
+            posts = json.loads(posts_file.read_text())
+            for p in posts:
+                p['updated_at'] = datetime.now(timezone.utc)
+            await db.posts.insert_many(posts)
+
 
 def clean_product(doc: dict) -> dict:
     doc.pop('_id', None)
@@ -101,8 +110,19 @@ class ProductBody(BaseModel):
     uses: list = []
     stock: str = 'in'
     specs: dict = {}
+    shades: list = []
     photo: str = ''
     img: str = 'fabricRack'
+
+
+class PostBody(BaseModel):
+    slug: str
+    title: str
+    date: str = ''
+    category: str = 'Industry Notes'
+    excerpt: str = ''
+    img: str = 'heroVelvet'
+    body: list = []
 
 
 @router.post('/admin/login')
@@ -172,6 +192,48 @@ async def delete_product(slug: str, request: Request):
     result = await _db.products.delete_one({'slug': slug})
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail='Fabric not found')
+    return {'deleted': slug}
+
+
+@router.get('/posts')
+async def list_posts():
+    docs = await _db.posts.find({}).sort('date', -1).to_list(200)
+    return [clean_product(d) for d in docs]
+
+
+@router.post('/admin/posts')
+async def create_post(body: PostBody, request: Request):
+    await require_admin(request)
+    slug = re.sub(r'[^a-z0-9]+', '-', body.slug.lower()).strip('-')
+    if await _db.posts.find_one({'slug': slug}):
+        raise HTTPException(status_code=409, detail='A post with this slug already exists')
+    doc = body.model_dump()
+    doc['slug'] = slug
+    if not doc['date']:
+        doc['date'] = datetime.now(timezone.utc).date().isoformat()
+    doc['updated_at'] = datetime.now(timezone.utc)
+    await _db.posts.insert_one(doc)
+    return clean_product(doc)
+
+
+@router.put('/admin/posts/{slug}')
+async def update_post(slug: str, body: PostBody, request: Request):
+    await require_admin(request)
+    doc = body.model_dump()
+    doc['slug'] = slug
+    doc['updated_at'] = datetime.now(timezone.utc)
+    result = await _db.posts.update_one({'slug': slug}, {'$set': doc})
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail='Post not found')
+    return clean_product(doc)
+
+
+@router.delete('/admin/posts/{slug}')
+async def delete_post(slug: str, request: Request):
+    await require_admin(request)
+    result = await _db.posts.delete_one({'slug': slug})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail='Post not found')
     return {'deleted': slug}
 
 
