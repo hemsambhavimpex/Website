@@ -34,7 +34,7 @@ export const CATEGORIES = [
     code: 'FLK',
     description:
       'Electrostatically flocked pile on fabric, non-woven and PVC bases — the workhorse of box-making, footwear and décor.',
-    image: IMAGES.heroVelvet,
+    image: '/assets/products/galaxy-velvet.jpg',
   },
   {
     id: 'weaving',
@@ -42,7 +42,7 @@ export const CATEGORIES = [
     code: 'WVN',
     description:
       'Loom-woven pile constructions with depth, drape and durability for upholstery, apparel and furnishing.',
-    image: IMAGES.sofaGreen,
+    image: '/assets/products/holland-velvet.jpg',
   },
   {
     id: 'knitting',
@@ -50,31 +50,31 @@ export const CATEGORIES = [
     code: 'KNT',
     description:
       'Fine micro-knitted velvets with a smooth face and natural stretch — garment and lining specialists.',
-    image: IMAGES.dressFlow,
+    image: '/assets/products/micro-11000-falcon.jpg',
   },
 ];
 
 export const PRODUCTS = [
-  { slug: 'coco-velvet', name: 'Coco Velvet', cat: 'flocked', variants: 'Plain', desc: 'Rich flocked pile with a warm, coco-toned depth — favoured for premium box linings.', uses: ['Jewelry & Fancy Boxes', 'Gift & Décor Boxes'], img: 'jewelBox' },
-  { slug: 'cloud-design-velvet', name: 'Cloud Design Velvet', cat: 'flocked', variants: 'Embossed design', desc: 'Soft flocked base carrying embossed cloud motifs for gift and décor packaging.', uses: ['Gift & Décor Boxes'], img: 'giftKraft' },
-  { slug: 'furry-velvet', name: 'Furry Velvet', cat: 'flocked', variants: 'High loft', desc: 'High-loft flocked surface with a plush, tactile hand-feel.', uses: ['Upholstery', 'Gift & Décor Boxes'], img: 'sofaOrange' },
-  { slug: 'galaxy-velvet', name: 'Galaxy Velvet', cat: 'flocked', variants: 'Plain & Embossed', desc: 'Shimmer-flecked flocked velvet, available in plain and embossed finishes.', uses: ['Jewelry & Fancy Boxes', 'Textile & Apparel'], img: 'jewelGold' },
-  { slug: 'gota-design-velvet', name: 'Gota Design Velvet', cat: 'flocked', variants: 'Design', desc: 'Traditional gota-inspired patterns flocked for festive and ethnic applications.', uses: ['Textile & Apparel', 'Gift & Décor Boxes'], img: 'saree' },
-  { slug: 'korean-velvet', name: 'Korean Velvet', cat: 'flocked', variants: 'Plain', desc: 'Fine, dense flocked pile with a smooth, even face for apparel and upholstery.', uses: ['Textile & Apparel', 'Upholstery'], img: 'fabricRack' },
-  { slug: 'non-woven-velvet', name: 'Non-Woven Velvet', cat: 'flocked', variants: 'Plain & Embossed', desc: 'Flocked non-woven base in plain and embossed options — the box-maker’s staple.', uses: ['Jewelry & Fancy Boxes', 'Gift & Décor Boxes'], img: 'giftPink' },
-  { slug: 'pvc-velvet', name: 'PVC Velvet', cat: 'flocked', variants: 'Plain', desc: 'Flocked PVC base — durable and wipeable, built for footwear and bags.', uses: ['Footwear'], img: 'sneaker' },
-  { slug: 'taffeta-velvet', name: 'Taffeta Velvet', cat: 'flocked', variants: 'Plain', desc: 'Crisp taffeta-backed flocking with a structured hand and clean drape.', uses: ['Textile & Apparel', 'Gift & Décor Boxes'], img: 'dressFlow' },
-  { slug: 'fd-full-dull-velvet', name: 'FD (Full Dull) Velvet', cat: 'weaving', variants: 'Woven', desc: 'Woven full-dull pile with a matte, understated lustre.', uses: ['Upholstery', 'Textile & Apparel'], img: 'sofaGrey' },
-  { slug: 'holland-velvet', name: 'Holland Velvet', cat: 'weaving', variants: 'Woven', desc: 'Classic woven upholstery velvet with a dense, even pile.', uses: ['Upholstery'], img: 'sofaGreen' },
-  { slug: 'kabul-velvet', name: 'Kabul Velvet', cat: 'weaving', variants: 'Woven', desc: 'Heavy woven construction suited to furnishings and statement décor.', uses: ['Upholstery', 'Gift & Décor Boxes'], img: 'bedroomLuxe' },
-  { slug: 'lycra-velvet', name: 'Lycra Velvet', cat: 'weaving', variants: 'Stretch', desc: 'Stretch woven velvet engineered for form-fitting apparel.', uses: ['Textile & Apparel'], img: 'flatlayDenim' },
-  { slug: 'mosha-velvet', name: 'Mosha Velvet', cat: 'weaving', variants: 'Woven', desc: 'Soft woven pile with a brushed, peached surface.', uses: ['Textile & Apparel', 'Upholstery'], img: 'bedroom' },
-  { slug: 'raising-velvet', name: 'Raising Velvet', cat: 'weaving', variants: 'Woven', desc: 'Raised-pile woven velvet with deep, sculptural texture.', uses: ['Upholstery'], img: 'chairYellow' },
-  { slug: 'brasso-velvet', name: 'Brasso Velvet', cat: 'knitting', variants: 'Burn-out', desc: 'Burn-out knitted velvet with patterned sheer contrast.', uses: ['Textile & Apparel'], img: 'denimStack' },
-  { slug: 'micro-11000-falcon', name: 'Micro 11000 (Falcon Velvet)', cat: 'knitting', variants: 'Micro knit', desc: 'High-density micro knit — our flagship “Falcon” quality.', uses: ['Textile & Apparel', 'Jewelry & Fancy Boxes'], img: 'blackTexture' },
-  { slug: 'micro-9000-velvet', name: 'Micro 9000 Velvet', cat: 'knitting', variants: 'Micro knit', desc: 'Fine micro knitted velvet for garments and precision lining.', uses: ['Textile & Apparel', 'Jewelry & Fancy Boxes'], img: 'jewelGold' },
-  { slug: 'micro-velvet-99999', name: 'Micro Velvet 99999', cat: 'knitting', variants: 'Micro knit', desc: 'Premium micro knit with an exceptionally smooth face.', uses: ['Textile & Apparel', 'Upholstery'], img: 'livingRoom' },
-  { slug: 'viscose-velvet', name: 'Viscose Velvet', cat: 'knitting', variants: 'Viscose blend', desc: 'Viscose-blend knitted velvet with a natural, fluid sheen.', uses: ['Textile & Apparel'], img: 'dressFlow' },
+  { slug: 'coco-velvet', name: 'Coco Velvet', cat: 'flocked', variants: 'Plain', desc: 'Rich flocked pile with a warm, coco-toned depth — favoured for premium box linings.', uses: ['Jewelry & Fancy Boxes', 'Gift & Décor Boxes'], specs: { composition: 'Warp-knit polyester velvet', gsm: '170 ±10%', width: '54 in (137 cm)', roll: '25 m rolls', moq: '250 m' }, photo: 'coco-velvet.jpg', img: 'jewelBox' },
+  { slug: 'cloud-design-velvet', name: 'Cloud Design Velvet', cat: 'flocked', variants: 'Embossed design', desc: 'Soft flocked base carrying embossed cloud motifs for gift and décor packaging.', uses: ['Gift & Décor Boxes'], specs: { composition: 'Custom base fabric, flocked', gsm: '150–300', width: '44 in & 56 in (112/142 cm)', roll: '50 m rolls', moq: '1,000 m (10,000 m for custom design)' }, photo: 'cloud-design-velvet.jpg', img: 'giftKraft' },
+  { slug: 'furry-velvet', name: 'Furry Velvet', cat: 'flocked', variants: 'High loft', desc: 'High-loft flocked surface with a plush, tactile hand-feel.', uses: ['Upholstery', 'Gift & Décor Boxes'], photo: 'furry-velvet.jpg', img: 'sofaOrange' },
+  { slug: 'galaxy-velvet', name: 'Galaxy Velvet', cat: 'flocked', variants: 'Plain & Embossed', desc: 'Shimmer-flecked flocked velvet, available in plain and embossed finishes.', uses: ['Jewelry & Fancy Boxes', 'Textile & Apparel'], photo: 'galaxy-velvet.jpg', img: 'jewelGold' },
+  { slug: 'gota-design-velvet', name: 'Gota Design Velvet', cat: 'flocked', variants: 'Design', desc: 'Traditional gota-inspired patterns flocked for festive and ethnic applications.', uses: ['Textile & Apparel', 'Gift & Décor Boxes'], photo: 'gota-design-velvet.jpg', img: 'saree' },
+  { slug: 'korean-velvet', name: 'Korean Velvet', cat: 'flocked', variants: 'Plain', desc: 'Fine, dense flocked pile with a smooth, even face for apparel and upholstery.', uses: ['Textile & Apparel', 'Upholstery'], photo: 'korean-velvet.jpg', img: 'fabricRack' },
+  { slug: 'non-woven-velvet', name: 'Non-Woven Velvet', cat: 'flocked', variants: 'Plain & Embossed', desc: 'Flocked non-woven base in plain and embossed options — the box-maker’s staple.', uses: ['Jewelry & Fancy Boxes', 'Gift & Décor Boxes'], specs: { composition: 'Flocked pile on non-woven base', gsm: '110', width: '60 in (152 cm)', roll: '50 m rolls', moq: '250 m per parcel (5 rolls)' }, photo: 'non-woven-velvet.jpg', img: 'giftPink' },
+  { slug: 'pvc-velvet', name: 'PVC Velvet', cat: 'flocked', variants: 'Plain', desc: 'Flocked PVC base — durable and wipeable, built for footwear and bags.', uses: ['Footwear'], photo: 'pvc-velvet.jpg', img: 'sneaker' },
+  { slug: 'taffeta-velvet', name: 'Taffeta Velvet', cat: 'flocked', variants: 'Plain', desc: 'Crisp taffeta-backed flocking with a structured hand and clean drape.', uses: ['Textile & Apparel', 'Gift & Décor Boxes'], photo: 'taffeta-velvet.jpg', img: 'dressFlow' },
+  { slug: 'fd-full-dull-velvet', name: 'FD (Full Dull) Velvet', cat: 'weaving', variants: 'Woven', desc: 'Woven full-dull pile with a matte, understated lustre.', uses: ['Upholstery', 'Textile & Apparel'], photo: 'fd-full-dull-velvet.jpg', img: 'sofaGrey' },
+  { slug: 'holland-velvet', name: 'Holland Velvet', cat: 'weaving', variants: 'Woven', desc: 'Classic woven upholstery velvet with a dense, even pile.', uses: ['Upholstery'], specs: { composition: '100% polyester, woven', gsm: '180', width: '56 in (142 cm)', roll: '50–70 m rolls', moq: '250 m' }, photo: 'holland-velvet.jpg', img: 'sofaGreen' },
+  { slug: 'kabul-velvet', name: 'Kabul Velvet', cat: 'weaving', variants: 'Woven', desc: 'Heavy woven construction suited to furnishings and statement décor.', uses: ['Upholstery', 'Gift & Décor Boxes'], photo: 'kabul-velvet.jpg', img: 'bedroomLuxe' },
+  { slug: 'lycra-velvet', name: 'Lycra Velvet', cat: 'weaving', variants: 'Stretch', desc: 'Stretch woven velvet engineered for form-fitting apparel.', uses: ['Textile & Apparel'], specs: { composition: 'Polyester–Lycra blend, woven', gsm: '125–220', width: '58–60 in (147–152 cm)', roll: '~20 kg rolls', moq: '40 kg (2 rolls)' }, photo: 'lycra-velvet.jpg', img: 'flatlayDenim' },
+  { slug: 'mosha-velvet', name: 'Mosha Velvet', cat: 'weaving', variants: 'Woven', desc: 'Soft woven pile with a brushed, peached surface.', uses: ['Textile & Apparel', 'Upholstery'], photo: 'mosha-velvet.jpg', img: 'bedroom' },
+  { slug: 'raising-velvet', name: 'Raising Velvet', cat: 'weaving', variants: 'Woven', desc: 'Raised-pile woven velvet with deep, sculptural texture.', uses: ['Upholstery'], photo: 'raising-velvet.jpg', img: 'chairYellow' },
+  { slug: 'brasso-velvet', name: 'Brasso Velvet', cat: 'knitting', variants: 'Burn-out', desc: 'Burn-out knitted velvet with patterned sheer contrast.', uses: ['Textile & Apparel'], photo: 'brasso-velvet.jpg', img: 'denimStack' },
+  { slug: 'micro-11000-falcon', name: 'Micro 11000 (Falcon Velvet)', cat: 'knitting', variants: 'Micro knit', desc: 'High-density micro knit — our flagship “Falcon” quality.', uses: ['Textile & Apparel', 'Jewelry & Fancy Boxes'], photo: 'micro-11000-falcon.jpg', img: 'blackTexture' },
+  { slug: 'micro-9000-velvet', name: 'Micro 9000 Velvet', cat: 'knitting', variants: 'Micro knit', desc: 'Fine micro knitted velvet for garments and precision lining.', uses: ['Textile & Apparel', 'Jewelry & Fancy Boxes'], specs: { composition: 'Polyester base, micro knit', gsm: '130', width: '44 in & 54 in (112/137 cm)', roll: '40–80 m folded rolls', moq: '~300 m per parcel' }, photo: 'micro-9000-velvet.jpg', img: 'jewelGold' },
+  { slug: 'micro-velvet-99999', name: 'Micro Velvet 99999', cat: 'knitting', variants: 'Micro knit', desc: 'Premium micro knit with an exceptionally smooth face.', uses: ['Textile & Apparel', 'Upholstery'], photo: 'micro-velvet-99999.jpg', img: 'livingRoom' },
+  { slug: 'viscose-velvet', name: 'Viscose Velvet', cat: 'knitting', variants: 'Viscose blend', desc: 'Viscose-blend knitted velvet with a natural, fluid sheen.', uses: ['Textile & Apparel'], photo: 'viscose-velvet.jpg', img: 'dressFlow' },
 ];
 
 export const END_USES = [

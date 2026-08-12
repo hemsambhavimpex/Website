@@ -27,12 +27,13 @@ Navy-dominant palette (#1A4C7D + paper #F4F1EA + rust #C85A17), real uploaded lo
 - Email delivery via Resend implemented but MOCKED (RESEND_API_KEY empty in backend/.env — needs a real key; without it inquiries are accepted and logged server-side only)
 - Product detail pages at /products/:slug for all 20 fabrics: indicative spec sheet (construction, composition, GSM, width, MOQ, packing, lead time, payment, Incoterms), 12-shade indicative digital shade card, prefilled quote + WhatsApp CTAs, related products (2026-08-12)
 - Floating WhatsApp button site-wide (wa.me/919429581000, prefilled message; per-product variant on detail pages) (2026-08-12)
-- Real-photo swap mechanism: drop JPGs named by slug into /app/frontend/public/assets/products/ and add `photo: '<slug>.jpg'` per product in catalog.js — productImage() helper already wired into cards, detail pages and related rails (2026-08-12)
+- Real JK Velvet mill photography live on all 20 products, category covers and gallery (pulled from jkvelvet.com asset paths via weserv image proxy into /public/assets/products/<slug>.jpg — local copies, no hotlink dependency) (2026-08-12)
+- Real published specs (composition, GSM, width, roll length, MOQ) from jkvelvet.com wired into detail pages + shade-card PDFs for Coco, Cloud Design, Non-Woven, Micro 9000, Lycra and Holland; remaining 14 show category-typical values marked "Indicative" (jkvelvet.com detail pages are bot-walled/500 — need user to supply) (2026-08-12)
 - Downloadable branded A4 shade-card PDFs per fabric: GET /api/shade-card/{slug} (reportlab, backend/shadecards.py) with spec table + 12 indicative shades; "Download Printable Shade Card (PDF)" button on every product detail page (2026-08-12)
 
 ## Backlog
 - P0: Add real RESEND_API_KEY (resend.com → API Keys) + verify hemsambhavimpex.com sending domain so emails actually reach contact@hemsambhavimpex.com; update SENDER_EMAIL to a verified domain address
-- P1: Upload real mill photography (drop slug-named JPGs in /app/frontend/public/assets/products/, then wire `photo:` fields in catalog.js)
+- P1: Supply real specs for the 14 fabrics still on indicative data (their jkvelvet.com detail pages were unreachable — bot wall)
 - P1: SEO metadata per page + OG image
 - P2: Blog CMS (DB-backed posts), product detail pages, multi-language, analytics events on quote CTAs
 

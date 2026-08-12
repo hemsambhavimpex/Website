@@ -32,6 +32,16 @@ PRODUCTS = {
     'viscose-velvet': ('Viscose Velvet', 'knitting', 'Viscose blend'),
 }
 
+# Real mill data published on jkvelvet.com
+MILL_SPECS = {
+    'coco-velvet': ('Warp-knit polyester velvet', '170 +/-10%', '54 in (137 cm)', '25 m rolls', '250 m'),
+    'cloud-design-velvet': ('Custom base fabric, flocked', '150-300', '44 in & 56 in (112/142 cm)', '50 m rolls', '1,000 m (10,000 m custom design)'),
+    'non-woven-velvet': ('Flocked pile on non-woven base', '110', '60 in (152 cm)', '50 m rolls', '250 m per parcel (5 rolls)'),
+    'micro-9000-velvet': ('Polyester base, micro knit', '130', '44 in & 54 in (112/137 cm)', '40-80 m folded rolls', '~300 m per parcel'),
+    'lycra-velvet': ('Polyester-Lycra blend, woven', '125-220', '58-60 in (147-152 cm)', '~20 kg rolls', '40 kg (2 rolls)'),
+    'holland-velvet': ('100% polyester, woven', '180', '56 in (142 cm)', '50-70 m rolls', '250 m'),
+}
+
 CATS = {
     'flocked': ('FLK', 'Flocked Velvet', 'Electrostatic flocked pile', 'Polyester pile on fabric / non-woven / PVC base', '180-320 (base dependent)', '44-58 in (112-147 cm)'),
     'weaving': ('WVN', 'Weaving Velvet', 'Loom-woven pile', 'Polyester / poly-viscose blends', '220-380', '54-58 in (137-147 cm)'),
@@ -68,6 +78,11 @@ def mono(c, x, y, text, size=7.5, color=MUTED, spaced=True):
 def build_shade_card(slug: str) -> bytes:
     name, cat, variants = PRODUCTS[slug]
     code, cat_name, construction, composition, gsm, width = CATS[cat]
+    mill = MILL_SPECS.get(slug)
+    if mill:
+        composition, gsm, width, roll, moq = mill
+    else:
+        roll, moq = 'Per buyer spec', '250 metres per item'
 
     buf = io.BytesIO()
     c = canvas.Canvas(buf, pagesize=A4)
@@ -101,8 +116,12 @@ def build_shade_card(slug: str) -> bytes:
     y -= 56
     specs = [
         ('Construction', construction), ('Composition', composition),
-        ('GSM', gsm), ('Usable Width', width),
-    ] + TRADE
+        ('GSM', gsm), ('Usable Width', width), ('Roll Length', roll), ('MOQ', moq),
+        ('Packing', 'Tube-rolled / folded, polybagged; bale or buyer spec'),
+        ('Lead Time', '7-15 days ex-mill, shade dependent'),
+        ('Payment', 'Advance / LC at sight'),
+        ('Incoterms', 'EXW / FOB / CIF (on request)'),
+    ]
     c.setStrokeColor(NAVY)
     c.setLineWidth(0.6)
     for i, (k, v) in enumerate(specs):
