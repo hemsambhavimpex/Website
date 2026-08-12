@@ -1,0 +1,94 @@
+{
+  "theme": "light",
+  "art_direction": {
+    "concept": "The Modern Trade Manifest / Textile Diplomacy",
+    "description": "A world-class, Awwwards-level visual identity mixing the rigid, structured aesthetic of international shipping/export documentation (grids, tabular data, stamps, monospace typography) with the rich, tactile warmth of premium velvet fabric. The design should feel authoritative, serious, and highly trustworthy, acting as a beacon for global bulk buyers.",
+    "vibe": "Premium, trustworthy, export-focused, highly crafted.",
+    "texture_and_grain": "Use a subtle SVG noise overlay (mix-blend-mode: multiply, opacity: 0.03) across the background to simulate archival paper/shipping documents. Avoid flat digital whiteness.",
+    "shapes": "Sharp edges, rectangular grids, border-collapse styles reminiscent of customs documentation and manifests. No overly rounded corners."
+  },
+  "colors": {
+    "primary": "#1A4C7D",
+    "primary_light": "#2A6B9C",
+    "primary_dark": "#0D2A47",
+    "background": "#F4F1EA",
+    "surface": "#FDFCFB",
+    "accent": "#C85A17",
+    "accent_light": "#E37432",
+    "text_main": "#111827",
+    "text_muted": "#4B5563",
+    "border": "rgba(26, 76, 125, 0.15)",
+    "footer_bg": "#0A192F"
+  },
+  "typography": {
+    "heading_font": "Cormorant Garamond",
+    "body_font": "Cabinet Grotesk",
+    "mono_font": "IBM Plex Mono",
+    "pairing_strategy": "Use 'Cormorant Garamond' (italicized selectively) for large, emotional hero hooks and quotes to convey textile heritage. Use 'Cabinet Grotesk' for body text and functional reading. Use 'IBM Plex Mono' for overlines, labels, tabular data, and shipping-like manifests (uppercase, tracking-widest).",
+    "sizes": {
+      "h1": "text-5xl md:text-7xl lg:text-8xl tracking-tighter leading-none",
+      "h2": "text-4xl md:text-5xl lg:text-6xl tracking-tight",
+      "h3": "text-2xl md:text-3xl lg:text-4xl",
+      "overline": "text-xs uppercase tracking-[0.2em] font-mono",
+      "body": "text-base md:text-lg leading-relaxed"
+    }
+  },
+  "components": {
+    "button": {
+      "primary": "Sharp rectangular (rounded-none), border border-primary bg-primary text-white hover:bg-transparent hover:text-primary transition-all duration-300 ease-out flex items-center gap-2",
+      "secondary": "Sharp rectangular, border border-border bg-transparent text-text_main hover:border-primary hover:text-primary transition-all duration-300 ease-out",
+      "arrow_icon": "Always include a sharp right-arrow (Phosphor Icons or Lucide) moving slightly right on hover."
+    },
+    "cards": {
+      "style": "Flat surface (#FDFCFB), 1px solid border (#1A4C7D with 15% opacity), no drop shadows. On hover, apply a slight translate-y offset and deepen the border color, staying true to the 'flat document' aesthetic."
+    },
+    "inputs": {
+      "style": "Shadcn UI customized: rounded-none, border-b-2 border-t-0 border-l-0 border-r-0 border-border bg-transparent focus:border-primary focus:ring-0 text-text_main placeholder:text-text_muted/50 transition-colors"
+    },
+    "header": {
+      "style": "Sticky top, backdrop-blur-md bg-[#F4F1EA]/80 border-b border-border. Include the 'H' pillar logo, navigation links, and a primary 'Request Quote' CTA."
+    }
+  },
+  "layout_rules_per_page": {
+    "home": "Hero section with large kinetic typography and masked reveals. Followed by a slow editorial marquee. A 'Bento' style grid for product categories (flocked, weaving, knitting). A strictly tabular 'Markets Served' section resembling an export manifest. Footer with large typography.",
+    "about": "Numbered manifesto chapters (01, 02, 03) scrolling up. Alternating split layout (50/50) with high-res loom/craft images and dense typographic blocks. Link back to JK Velvet.",
+    "products": "Grid layout (3 columns on desktop, 1 on mobile). Each item in a sharp-edged card showing fabric texture. Sticky sidebar for filtering by 'Velvet Type' and 'End-Use'.",
+    "gallery": "Masonry or staggered asymmetric grid. Close-up images of velvet textures prioritizing 'Zoom in' intimacy.",
+    "blog": "List view resembling a directory or archive index (dates in monospace on the left, large serif titles on the right).",
+    "contact": "Two-column layout. Left: Large elegant text, office address, and contact details. Right: The lead-gen inquiry form (minimalist, floating labels, distinct dropdown for products)."
+  },
+  "motion": {
+    "scrolling": "Use 'lenis' for smooth momentum scrolling. This is mandatory for the premium Awwwards feel.",
+    "hero_reveal": "Masked line-by-line text reveal: Use framer-motion. Wrap text lines in 'overflow-hidden' divs, and translate the text up from y: '100%' to y: '0%' over 1.2s with a custom ease [0.76, 0, 0.24, 1].",
+    "parallax": "Use framer-motion useScroll and useTransform for hero image backgrounds to move at a slower speed than the page scroll.",
+    "marquee": "Use react-fast-marquee. Very slow speed. Text: 'POSSIBILITY TO PROSPERITY ✦ HEMSAMBHAV IMPEX ✦ EXPORT DIVISION ✦'. Font: Cormorant Garamond italic.",
+    "scroll_reveals": "Sections should fade in and translate slightly up (y: 40 to y: 0) when coming into view using Framer Motion's whileInView."
+  },
+  "images": {
+    "fabric_blue": {
+      "url": "https://images.unsplash.com/photo-1629197521865-4946b4acd2b0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwxfHxwcmVtaXVtJTIwdmVsdmV0JTIwZmFicmljJTIwdGV4dHVyZXxlbnwwfHx8fDE3ODY1MTYwNjF8MA&ixlib=rb-4.1.0&q=85",
+      "usage": "Hero section background or primary product showcase (Flocked Velvet)."
+    },
+    "fabric_brown": {
+      "url": "https://images.unsplash.com/photo-1599568723850-14196ee0f991?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzMzN8MHwxfHNlYXJjaHwyfHxwcmVtaXVtJTIwdmVsdmV0JTIwZmFicmljJTIwdGV4dHVyZXxlbnwwfHx8fDE3ODY1MTYwNjF8MA&ixlib=rb-4.1.0&q=85",
+      "usage": "Secondary fabric texture showcase (Weaving Velvet)."
+    },
+    "cargo_ship": {
+      "url": "https://images.unsplash.com/photo-1670121180530-cfcba4438038?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTV8MHwxfHNlYXJjaHwzfHxzaGlwcGluZyUyMHBvcnQlMjBjYXJnbyUyMGNvbnRhaW5lciUyMGxvZ2lzdGljc3xlbnwwfHx8fDE3ODY1MTYwNjF8MA&ixlib=rb-4.1.0&q=85",
+      "usage": "About page or Markets Served section background (Export Logistics)."
+    },
+    "container_yard": {
+      "url": "https://images.unsplash.com/photo-1494412519320-aa613dfb7738?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTV8MHwxfHNlYXJjaHwxfHxzaGlwcGluZyUyMHBvcnQlMjBjYXJnbyUyMGNvbnRhaW5lciUyMGxvZ2lzdGljc3xlbnwwfHx8fDE3ODY1MTYwNjF8MA&ixlib=rb-4.1.0&q=85",
+      "usage": "Global reach/Markets served abstract visual."
+    },
+    "loom_craft": {
+      "url": "https://images.unsplash.com/photo-1598616068517-c75ad397a436?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwxfHx0cmFkaXRpb25hbCUyMHRleHRpbGUlMjBjcmFmdHNtYW5zaGlwJTIwbG9vbXxlbnwwfHx8fDE3ODY1MTYwNjF8MA&ixlib=rb-4.1.0&q=85",
+      "usage": "About page 'Craftsmanship since 1990' section."
+    }
+  },
+  "universal_guidelines": {
+    "instruction_to_main_agent": "Ensure strict adherence to the font pairings. Do NOT use Inter, Roboto, or Space Grotesk. Rely heavily on grid layouts with 1px borders to simulate tabular shipping manifests. Do NOT add rounded borders (border-radius) unless absolutely necessary. Apply 'data-testid' to all interactive elements (buttons, links, form inputs) using kebab-case role-based names. Ensure contrast requirements are met (WCAG AA). Avoid complete transparency on interactive overlays.",
+    "testing": "All interactive elements MUST include data-testid attribute.",
+    "dependencies": "yarn add framer-motion @studio-freight/lenis react-fast-marquee @phosphor-icons/react clsx tailwind-merge"
+  }
+}

@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 43 30% 94%;
+        --foreground: 211 69% 16%;
+        --card: 40 33% 97%;
+        --card-foreground: 211 69% 16%;
+        --popover: 40 33% 97%;
+        --popover-foreground: 211 69% 16%;
+        --primary: 208 65% 30%;
+        --primary-foreground: 43 30% 96%;
+        --secondary: 40 20% 90%;
+        --secondary-foreground: 211 69% 16%;
+        --muted: 40 18% 88%;
+        --muted-foreground: 213 20% 40%;
+        --accent: 21 79% 44%;
+        --accent-foreground: 43 30% 96%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 0 0% 98%;
+        --border: 208 40% 30% / 0.15;
+        --input: 208 40% 30% / 0.25;
+        --ring: 208 65% 30%;
+        --radius: 0rem;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    html {
+        scroll-behavior: auto;
+    }
+    body {
+        @apply bg-paper text-navy-dark font-sans antialiased;
+        margin: 0;
+    }
+    ::selection {
+        background: #C85A17;
+        color: #F4F1EA;
+    }
+}
+
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+.grain::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.035;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 280px 280px;
+}
+
+@layer components {
+    .overline {
+        @apply font-mono text-[11px] uppercase tracking-[0.25em] text-navy/70;
+    }
+    .btn-primary {
+        @apply inline-flex items-center gap-3 border border-navy bg-navy px-7 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-paper transition-colors duration-300 hover:bg-transparent hover:text-navy;
+    }
+    .btn-secondary {
+        @apply inline-flex items-center gap-3 border border-navy/25 bg-transparent px-7 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-navy-dark transition-colors duration-300 hover:border-navy hover:text-navy;
+    }
+    .btn-light {
+        @apply inline-flex items-center gap-3 border border-paper/40 bg-transparent px-7 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-paper transition-colors duration-300 hover:bg-paper hover:text-navy-ink;
+    }
+    .manifest-row {
+        @apply grid grid-cols-2 md:grid-cols-4 border-t border-navy/15;
+    }
+    .img-frame {
+        @apply relative overflow-hidden;
+    }
+    .img-frame img {
+        @apply h-full w-full object-cover transition-transform duration-700 ease-out;
+    }
+    .img-frame:hover img {
+        transform: scale(1.05);
+    }
+    .field-input {
+        @apply w-full border-0 border-b-2 border-navy/20 bg-transparent px-0 py-3 text-base text-navy-dark placeholder:text-navy-dark/35 focus:border-navy focus:outline-none focus:ring-0 transition-colors;
+    }
+    .field-label {
+        @apply font-mono text-[10px] uppercase tracking-[0.22em] text-navy/60;
+    }
+}
+
+@layer base {
+    [data-debug-wrapper="true"] {
+        display: contents !important;
+    }
+
+    [data-debug-wrapper="true"] > * {
+        margin-left: inherit;
+        margin-right: inherit;
+        margin-top: inherit;
+        margin-bottom: inherit;
+        padding-left: inherit;
+        padding-right: inherit;
+        padding-top: inherit;
+        padding-bottom: inherit;
+        column-gap: inherit;
+        row-gap: inherit;
+        gap: inherit;
+        border-left-width: inherit;
+        border-right-width: inherit;
+        border-top-width: inherit;
+        border-bottom-width: inherit;
+        border-left-style: inherit;
+        border-right-style: inherit;
+        border-top-style: inherit;
+        border-bottom-style: inherit;
+        border-left-color: inherit;
+        border-right-color: inherit;
+        border-top-color: inherit;
+        border-bottom-color: inherit;
+    }
+}
