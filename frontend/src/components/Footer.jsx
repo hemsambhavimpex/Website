@@ -75,7 +75,7 @@ export const Footer = () => (
               data-testid="footer-indiamart-link"
               className="inline-flex items-center gap-2 opacity-90 transition-opacity hover:opacity-100"
             >
-              <img src="/assets/indiamart-logo.webp" alt="IndiaMART" className="h-8 w-auto" data-testid="footer-indiamart-logo" />
+              <img src="/assets/indiamart-logo.webp" alt="IndiaMART" className="h-9 w-auto" data-testid="footer-indiamart-logo" />
               <ArrowUpRight size={14} className="text-paper/50" />
             </a>
           </div>
@@ -87,12 +87,12 @@ export const Footer = () => (
         </p>
         <div className="flex flex-col gap-3 md:items-end">
           <span className="font-mono text-[9px] uppercase tracking-[0.22em]" style={{ color: GOLD }}>Credentials</span>
-          <div className="flex items-center gap-4">
-            <span className="inline-flex items-center rounded-md bg-white px-6 py-3.5" data-testid="footer-sgcci-logo">
-              <img src="/assets/sgcci-logo.png" alt="SGCCI — The Southern Gujarat Chamber of Commerce & Industry" className="h-14 w-auto" />
+          <div className="flex flex-wrap items-center gap-4">
+            <span className="inline-flex h-28 w-52 items-center justify-center rounded-lg bg-white px-6 py-4" data-testid="footer-sgcci-logo">
+              <img src="/assets/sgcci-logo.png" alt="SGCCI — The Southern Gujarat Chamber of Commerce & Industry" className="h-16 w-auto" />
             </span>
-            <span className="inline-flex items-center rounded-md bg-white px-6 py-3.5" data-testid="footer-msme-logo">
-              <img src="/assets/msme-logo.png" alt="Ministry of Micro, Small & Medium Enterprises, Government of India" className="h-14 w-auto" />
+            <span className="inline-flex h-28 w-52 items-center justify-center rounded-lg bg-white px-6 py-4" data-testid="footer-msme-logo">
+              <img src="/assets/msme-logo.png" alt="Ministry of Micro, Small & Medium Enterprises, Government of India" className="h-16 w-auto" />
             </span>
           </div>
         </div>
