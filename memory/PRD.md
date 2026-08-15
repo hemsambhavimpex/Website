@@ -21,7 +21,13 @@ Lead-generation website for HemSambhav Impex, the export division of Shree JK Ha
 - Admin panel (/admin route, Admin.jsx), axios, useProducts/usePosts/useGallery hooks
 
 ## Backlog
-- P1: Custom domain (hemsambhavimpex.com) + deploy build/ to static host (user handles domain)
-- P1: Confirm FormSubmit activation email (first submission sent 2026-08-15)
-- P2: User manages PDFs themselves; if shades/specs change, PDFs in public/pdfs must be regenerated or replaced manually
-- P2: Sitemap.xml + robots.txt for the static host
+- P1: Custom domain (hemsambhavimpex.com) + upload frontend/build to Hostinger Single public_html (user handles domain)
+- P1: Confirm FormSubmit activation email (test submissions sent 2026-08-15)
+
+## Production readiness (2026-08-15)
+- public/.htaccess added: Apache SPA rewrite (deep links/refresh work on Hostinger), 1y asset caching, gzip, ErrorDocument 404 → index.html
+- Branded 404 page (src/pages/NotFound.jsx) replaced the Home catch-all
+- Mobile darkening fixed: Chrome Android auto-dark-theme was recoloring the page because no color-scheme was declared — added `<meta name="color-scheme" content="only light">` + `html { color-scheme: only light }`. Desktop untouched
+- Emergent-only scripts removed from index.html: emergent-main.js, PostHog analytics (ap.emergent.sh), DataCloneError preview patch
+- Verified on static serve of build/: all routes 200, 20/20 product pages, 3/3 posts, 404 page, mobile menu, FormSubmit success + mailto fallback, no console errors
+- Build: `cd frontend && yarn build` → deploy frontend/build/ (8.6 MB: 20 PDFs, 20 product photos, hashed bundles)

@@ -14,6 +14,7 @@ import Gallery from '@/pages/Gallery';
 import Blog from '@/pages/Blog';
 import BlogPost from '@/pages/BlogPost';
 import Contact from '@/pages/Contact';
+import NotFound from '@/pages/NotFound';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -53,7 +54,7 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<Home />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />

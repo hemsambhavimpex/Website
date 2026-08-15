@@ -36,6 +36,7 @@
     }
     html {
         scroll-behavior: auto;
+        color-scheme: only light;
     }
     body {
         @apply bg-paper text-navy-dark font-sans antialiased;
