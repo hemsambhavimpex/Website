@@ -6,6 +6,7 @@ import { ArrowUpRight, Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react';
 import { PageHero, Reveal } from '../components/Reveal';
 import { PRODUCTS as STATIC_PRODUCTS, CATEGORIES, END_USES, CONTACT } from '../data/catalog';
 import { useProducts } from '../hooks/useProducts';
+import { useSEO } from '../hooks/useSEO';
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -17,6 +18,7 @@ const Field = ({ label, id, children }) => (
 );
 
 const Contact = () => {
+  useSEO('Request a Quote — Contact | HemSambhav Impex', 'Tell us your velvet construction, quantity and destination port. The export desk at JK House, Surat replies within one business day.');
   const PRODUCTS = useProducts();
   const [params] = useSearchParams();
   const [form, setForm] = useState({

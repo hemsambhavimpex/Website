@@ -3,11 +3,13 @@ import { ArrowUpRight } from 'lucide-react';
 import { PageHero, Reveal } from '../components/Reveal';
 import { BLOG_POSTS as STATIC_POSTS } from '../data/catalog';
 import { usePosts } from '../hooks/usePosts';
+import { useSEO } from '../hooks/useSEO';
 
 const fmt = (d) =>
   new Date(d).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' }).toUpperCase();
 
 const Blog = () => {
+  useSEO('The Trade Journal — Velvet & Export Notes | HemSambhav Impex', 'Velvet constructions, bulk-order checklists and export documentation guides for fabric buyers — from the HemSambhav Impex manifest desk.');
   const BLOG_POSTS = usePosts();
   return (
   <div data-testid="blog-page">

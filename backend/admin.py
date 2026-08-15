@@ -90,6 +90,11 @@ async def seed(db):
                 p['updated_at'] = datetime.now(timezone.utc)
             await db.posts.insert_many(posts)
 
+    if await db.gallery.count_documents({}) == 0:
+        gallery_file = Path(__file__).parent / 'seed_gallery.json'
+        if gallery_file.exists():
+            await db.gallery.insert_many(json.loads(gallery_file.read_text()))
+
 
 def clean_product(doc: dict) -> dict:
     doc.pop('_id', None)
@@ -123,6 +128,14 @@ class PostBody(BaseModel):
     excerpt: str = ''
     img: str = 'heroVelvet'
     body: list = []
+
+
+class TileBody(BaseModel):
+    img: str = ''
+    cat: str = 'flocked'
+    label: str = ''
+    aspect: str = 'aspect-[4/3]'
+    order: int = 0
 
 
 @router.post('/admin/login')
@@ -235,6 +248,66 @@ async def delete_post(slug: str, request: Request):
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail='Post not found')
     return {'deleted': slug}
+
+
+@router.get('/admin/inquiries')
+async def list_inquiries(request: Request):
+    await require_admin(request)
+    docs = await _db.inquiries.find({}).sort('created_at', -1).to_list(500)
+    return [clean_product(d) for d in docs]
+
+
+@router.put('/admin/inquiries/{inquiry_id}/read')
+async def mark_inquiry_read(inquiry_id: str, request: Request):
+    await require_admin(request)
+    result = await _db.inquiries.update_one({'id': inquiry_id}, {'$set': {'read': True}})
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail='Inquiry not found')
+    return {'read': inquiry_id}
+
+
+@router.delete('/admin/inquiries/{inquiry_id}')
+async def delete_inquiry(inquiry_id: str, request: Request):
+    await require_admin(request)
+    result = await _db.inquiries.delete_one({'id': inquiry_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail='Inquiry not found')
+    return {'deleted': inquiry_id}
+
+
+@router.get('/gallery')
+async def list_gallery():
+    docs = await _db.gallery.find({}).sort('order', 1).to_list(200)
+    return [clean_product(d) for d in docs]
+
+
+@router.post('/admin/gallery')
+async def create_tile(body: TileBody, request: Request):
+    await require_admin(request)
+    doc = body.model_dump()
+    doc['id'] = uuid.uuid4().hex[:12]
+    doc['order'] = await _db.gallery.count_documents({})
+    await _db.gallery.insert_one(doc)
+    return clean_product(doc)
+
+
+@router.put('/admin/gallery/{tile_id}')
+async def update_tile(tile_id: str, body: TileBody, request: Request):
+    await require_admin(request)
+    doc = body.model_dump()
+    result = await _db.gallery.update_one({'id': tile_id}, {'$set': doc})
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail='Tile not found')
+    return doc
+
+
+@router.delete('/admin/gallery/{tile_id}')
+async def delete_tile(tile_id: str, request: Request):
+    await require_admin(request)
+    result = await _db.gallery.delete_one({'id': tile_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail='Tile not found')
+    return {'deleted': tile_id}
 
 
 @router.post('/admin/upload')

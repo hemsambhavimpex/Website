@@ -5,6 +5,7 @@ import { MaskedLines, Reveal } from '../components/Reveal';
 import { EditorialMarquee } from '../components/EditorialMarquee';
 import { IMAGES, CATEGORIES, MARKETS, END_USES, PRODUCTS as STATIC_PRODUCTS, CONTACT } from '../data/catalog';
 import { useProducts } from '../hooks/useProducts';
+import { useSEO } from '../hooks/useSEO';
 
 const WHY = [
   { n: '01', title: 'Mill-direct, not middle-trade', desc: 'We are the export division of the manufacturer itself. Your fabric comes off JK Velvet’s own lines — no trader’s margin, no broken telephone between loom and loading bay.' },
@@ -21,6 +22,7 @@ const META = [
 ];
 
 const Home = () => {
+  useSEO('HemSambhav Impex — Premium Velvet Export · Surat, India', 'Export division of JK Velvet (est. 1990). Mill-direct flocked, weaving and knitting velvet shipped to Nepal, Bangladesh, UAE, UK and beyond. MOQ from 150 m.');
   const PRODUCTS = useProducts();
   const { scrollY } = useScroll();
   const heroImgY = useTransform(scrollY, [0, 900], [0, 140]);

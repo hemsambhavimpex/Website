@@ -7,8 +7,10 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import os
 import asyncio
 import logging
+import uuid
 from pathlib import Path
 from pydantic import BaseModel, EmailStr
+from datetime import datetime, timezone
 from shadecards import build_shade_card
 import admin as admin_module
 
@@ -77,6 +79,11 @@ async def root():
 
 @api_router.post("/inquiries")
 async def create_inquiry(inquiry: Inquiry):
+    doc = inquiry.model_dump()
+    doc['id'] = uuid.uuid4().hex[:12]
+    doc['read'] = False
+    doc['created_at'] = datetime.now(timezone.utc)
+    await db.inquiries.insert_one(doc)
     delivered = False
     if RESEND_API_KEY:
         try:

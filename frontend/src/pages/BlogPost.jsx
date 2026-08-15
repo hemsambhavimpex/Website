@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { MaskedLines, Reveal } from '../components/Reveal';
 import { BLOG_POSTS as STATIC_POSTS, postImage } from '../data/catalog';
 import { usePosts } from '../hooks/usePosts';
+import { useSEO } from '../hooks/useSEO';
 
 const fmt = (d) =>
   new Date(d).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric' });
@@ -11,6 +12,10 @@ const BlogPost = () => {
   const { slug } = useParams();
   const BLOG_POSTS = usePosts();
   const post = BLOG_POSTS.find((p) => p.slug === slug);
+  useSEO(
+    post ? `${post.title} | HemSambhav Impex` : 'Trade Journal | HemSambhav Impex',
+    post?.excerpt || ''
+  );
 
   if (!post) {
     return (

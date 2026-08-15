@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { PageHero, Reveal } from '../components/Reveal';
-import { IMAGES, CATEGORIES } from '../data/catalog';
+import { IMAGES, CATEGORIES, galleryImage } from '../data/catalog';
+import { useGallery } from '../hooks/useGallery';
+import { useSEO } from '../hooks/useSEO';
 
 const P = (slug) => `/assets/products/${slug}.jpg`;
 
-const TILES = [
+const STATIC_TILES = [
   { img: P('galaxy-velvet'), cat: 'flocked', label: 'Flocked — Galaxy, embossed', aspect: 'aspect-[3/4]' },
   { img: P('non-woven-velvet'), cat: 'flocked', label: 'Flocked — Non-woven, box lining', aspect: 'aspect-square' },
   { img: P('cloud-design-velvet'), cat: 'flocked', label: 'Flocked — Cloud design face', aspect: 'aspect-[4/3]' },
@@ -23,6 +25,8 @@ const TILES = [
 const FILTERS = [{ id: 'all', name: 'All' }, ...CATEGORIES.map((c) => ({ id: c.id, name: c.name })), { id: 'craft', name: 'The Mill' }];
 
 const Gallery = () => {
+  useSEO('Gallery — Velvet Texture Archive | HemSambhav Impex', 'Real mill photography of JK Velvet fabrics — flocked, weaving and knitting velvet textures from the Surat floor.');
+  const TILES = useGallery(STATIC_TILES);
   const [filter, setFilter] = useState('all');
   const shown = filter === 'all' ? TILES : TILES.filter((t) => t.cat === filter);
 
@@ -63,7 +67,7 @@ const Gallery = () => {
             <Reveal key={`${filter}-${i}`} delay={(i % 3) * 0.07} className="mb-6 break-inside-avoid">
               <figure className="group" data-testid={`gallery-tile-${t.cat}-${i}`}>
                 <div className={`img-frame ${t.aspect} border border-navy/20`}>
-                  <img src={t.img.startsWith('/') ? t.img : IMAGES[t.img]} alt={t.label} loading="lazy" className="transition-transform duration-700" />
+                  <img src={galleryImage(t)} alt={t.label} loading="lazy" className="transition-transform duration-700" />
                   <div className="absolute inset-0 bg-navy/25 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-0" />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy-ink/50 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
                 </div>

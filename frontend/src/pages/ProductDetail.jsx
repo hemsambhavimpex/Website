@@ -3,11 +3,16 @@ import { ArrowLeft, ArrowUpRight, Download, MessageSquare } from 'lucide-react';
 import { MaskedLines, Reveal } from '../components/Reveal';
 import { PRODUCTS as STATIC_PRODUCTS, CATEGORIES, IMAGES, SPECS_BY_CAT, TRADE_TERMS, SHADE_CARD, CONTACT, productImage } from '../data/catalog';
 import { useProducts } from '../hooks/useProducts';
+import { useSEO } from '../hooks/useSEO';
 
 const ProductDetail = () => {
   const { slug } = useParams();
   const PRODUCTS = useProducts();
   const product = PRODUCTS.find((p) => p.slug === slug);
+  useSEO(
+    product ? `${product.name} — ${product.variants || 'Velvet'} Export | HemSambhav Impex` : 'Fabric Not Found | HemSambhav Impex',
+    product ? `${product.desc} Mill-direct from JK Velvet, Surat. ${product.specs?.moq ? `MOQ ${product.specs.moq}.` : ''}` : ''
+  );
   const API = process.env.REACT_APP_BACKEND_URL;
 
   if (!product) {

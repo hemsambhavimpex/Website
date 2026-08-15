@@ -3,6 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 import { PageHero, Reveal } from '../components/Reveal';
 import { EditorialMarquee } from '../components/EditorialMarquee';
 import { IMAGES, CONTACT } from '../data/catalog';
+import { useSEO } from '../hooks/useSEO';
 
 const CHAPTERS = [
   {
@@ -42,7 +43,9 @@ const CAPABILITIES = [
   { n: 'S-04', title: 'Logistics Coordination', desc: 'Road to Nepal and Bangladesh, sea via Nhava Sheva and Mundra, air for urgent lots. LCL and FCL, consolidated multi-item loads.' },
 ];
 
-const About = () => (
+const About = () => {
+  useSEO('About — The House of Velvet Since 1990 | HemSambhav Impex', 'Founded in Surat in 1990 by Anil Doshi, velvet specialists since 2002. HemSambhav Impex is the export division of JK Velvet — sourcing, QC, documentation and logistics.');
+  return (
   <div data-testid="about-page">
     <PageHero
       id="about-hero"
@@ -149,6 +152,7 @@ const About = () => (
       </div>
     </section>
   </div>
-);
+  );
+};
 
 export default About;

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'sonner';
 import { ArrowLeft, LogOut, Pencil, Plus, Trash2, Upload, X } from 'lucide-react';
-import { CATEGORIES, END_USES, productImage, postImage } from '../data/catalog';
+import { CATEGORIES, END_USES, productImage, postImage, galleryImage } from '../data/catalog';
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
@@ -19,6 +19,91 @@ const EMPTY = {
 
 const EMPTY_POST = {
   slug: '', title: '', date: '', category: 'Industry Notes', excerpt: '', img: '', bodyText: '',
+};
+
+const EMPTY_TILE = { img: '', cat: 'flocked', label: '', aspect: 'aspect-[4/3]', order: 0 };
+
+const TileEditor = ({ tile, onClose, onSaved }) => {
+  const isNew = !tile.id;
+  const [form, setForm] = useState(tile);
+  const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const set = (k) => (e) => setForm({ ...form, [k]: e.target.value });
+
+  const upload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    setUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append('file', file);
+      const { data } = await axios.post(`${API}/admin/upload`, fd, auth());
+      setForm({ ...form, img: data.url });
+      toast.success('Image uploaded');
+    } catch (err) {
+      toast.error(fmtErr(err.response?.data?.detail));
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  const save = async (e) => {
+    e.preventDefault();
+    setSaving(true);
+    try {
+      if (isNew) await axios.post(`${API}/admin/gallery`, form, auth());
+      else await axios.put(`${API}/admin/gallery/${tile.id}`, form, auth());
+      toast.success(isNew ? 'Photo added to gallery' : 'Photo updated');
+      onSaved();
+    } catch (err) {
+      toast.error(fmtErr(err.response?.data?.detail));
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 z-[70] overflow-y-auto bg-navy-ink/60 backdrop-blur-sm" data-testid="tile-editor">
+      <form onSubmit={save} className="mx-auto my-10 max-w-xl border border-navy/20 bg-paper p-8">
+        <div className="flex items-center justify-between">
+          <h2 className="font-serif text-3xl text-navy-dark">{isNew ? 'Add Gallery Photo' : 'Edit Photo'}</h2>
+          <button type="button" onClick={onClose} data-testid="tile-editor-close" className="text-navy/50 hover:text-rust"><X size={22} /></button>
+        </div>
+        <div className="mt-8 space-y-6">
+          <div>
+            <p className="field-label">Image *</p>
+            <div className="mt-2 flex items-center gap-5">
+              {form.img && <img src={galleryImage(form)} alt="" className="h-20 w-28 border border-navy/20 object-cover" data-testid="tile-image-preview" />}
+              <label className="btn-secondary cursor-pointer" data-testid="tile-upload-button">
+                <Upload size={14} /> {uploading ? 'Uploading…' : 'Upload Image'}
+                <input type="file" accept="image/*" className="hidden" onChange={upload} data-testid="tile-upload-input" />
+              </label>
+            </div>
+          </div>
+          <Field label="Caption" id="t-label">
+            <input id="t-label" data-testid="tile-label" required value={form.label} onChange={set('label')} className="field-input" placeholder="Flocked — Galaxy, embossed" />
+          </Field>
+          <div className="grid grid-cols-2 gap-6">
+            <Field label="Category" id="t-cat">
+              <select id="t-cat" data-testid="tile-category" value={form.cat} onChange={set('cat')} className="field-input cursor-pointer">
+                {[...CATEGORIES.map((c) => [c.id, c.name]), ['craft', 'The Mill']].map(([v, l]) => <option key={v} value={v}>{l}</option>)}
+              </select>
+            </Field>
+            <Field label="Frame Shape" id="t-aspect">
+              <select id="t-aspect" data-testid="tile-aspect" value={form.aspect} onChange={set('aspect')} className="field-input cursor-pointer">
+                <option value="aspect-[3/4]">Tall (3:4)</option>
+                <option value="aspect-square">Square</option>
+                <option value="aspect-[4/3]">Wide (4:3)</option>
+              </select>
+            </Field>
+          </div>
+        </div>
+        <button type="submit" disabled={saving || uploading || !form.img} className="btn-primary mt-8 w-full justify-center disabled:opacity-60" data-testid="tile-save">
+          {saving ? 'Saving…' : isNew ? 'Add to Gallery' : 'Save Changes'}
+        </button>
+      </form>
+    </div>
+  );
 };
 
 const SPEC_FIELDS = [
@@ -148,7 +233,10 @@ const Editor = ({ product, onClose, onSaved }) => {
                   <div key={i} className="flex items-center gap-2 border border-navy/15 p-2" data-testid={`editor-shade-row-${i}`}>
                     <input type="color" value={s.hex} data-testid={`editor-shade-color-${i}`}
                       onChange={(e) => setForm({ ...form, shades: form.shades.map((x, j) => (j === i ? { ...x, hex: e.target.value } : x)) })}
-                      className="h-9 w-12 cursor-pointer border-0 bg-transparent p-0" />
+                      className="h-9 w-10 shrink-0 cursor-pointer border-0 bg-transparent p-0" />
+                    <input value={s.hex} data-testid={`editor-shade-hex-${i}`}
+                      onChange={(e) => setForm({ ...form, shades: form.shades.map((x, j) => (j === i ? { ...x, hex: e.target.value } : x)) })}
+                      className="field-input w-20 shrink-0 !py-1.5 font-mono text-xs" placeholder="#1A4C7D" />
                     <input value={s.name} placeholder="Shade name" data-testid={`editor-shade-name-${i}`}
                       onChange={(e) => setForm({ ...form, shades: form.shades.map((x, j) => (j === i ? { ...x, name: e.target.value } : x)) })}
                       className="field-input !py-1.5 text-sm" />
@@ -298,8 +386,12 @@ const Admin = () => {
   const [password, setPassword] = useState('');
   const [products, setProducts] = useState([]);
   const [posts, setPosts] = useState([]);
+  const [inquiries, setInquiries] = useState([]);
+  const [tiles, setTiles] = useState([]);
   const [editing, setEditing] = useState(null);
   const [editingPost, setEditingPost] = useState(null);
+  const [editingTile, setEditingTile] = useState(null);
+  const [openInquiry, setOpenInquiry] = useState(null);
   const [tab, setTab] = useState('fabrics');
   const [filter, setFilter] = useState('');
 
@@ -308,6 +400,8 @@ const Admin = () => {
       if (e.response?.status === 401) logout();
     });
     axios.get(`${API}/posts`).then((r) => setPosts(r.data)).catch(() => {});
+    axios.get(`${API}/admin/inquiries`, auth()).then((r) => setInquiries(r.data)).catch(() => {});
+    axios.get(`${API}/gallery`).then((r) => setTiles(r.data)).catch(() => {});
   };
 
   useEffect(() => { if (token) load(); }, [token]);

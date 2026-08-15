@@ -195,6 +195,9 @@ export const productImage = (p) => {
 export const postImage = (p) =>
   p.img && (p.img.startsWith('/') || p.img.startsWith('http')) ? p.img : IMAGES[p.img] || IMAGES.heroVelvet;
 
+export const galleryImage = (t) =>
+  t.img && (t.img.startsWith('/') || t.img.startsWith('http')) ? t.img : IMAGES[t.img] || IMAGES.loom;
+
 export const CONTACT = {
   email: 'contact@hemsambhavimpex.com',
   phone: '+91 94295 81000',
