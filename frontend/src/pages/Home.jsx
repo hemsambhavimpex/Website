@@ -117,7 +117,7 @@ const Home = () => {
             {META.map(([k, v], i) => (
               <div key={k} className={`py-5 pr-6 ${i < 3 ? 'md:border-r md:border-navy/15' : ''} ${i % 2 === 0 ? 'border-r border-navy/15 md:border-r' : ''}`}>
                 <p className="overline">{k}</p>
-                <p className="mt-1 font-serif text-xl text-navy-dark md:text-2xl">{v}</p>
+                <p className="mt-1 font-serif text-xl text-navy-dark md:text-2xl lg:whitespace-nowrap lg:text-sm xl:text-lg min-[1440px]:text-xl min-[1700px]:text-2xl">{v}</p>
               </div>
             ))}
           </motion.div>
