@@ -38,7 +38,7 @@ const VALUES = [
 
 const CAPABILITIES = [
   { n: 'S-01', title: 'Sourcing & Development', desc: 'Custom colours, pile heights, bases and embossed designs developed with our mill team — from lab dip to bulk.' },
-  { n: 'S-02', title: 'Quality Control', desc: 'Shade bands under D65, GSM verification, roll mapping and pre-dispatch inspection records on every consignment.' },
+  { n: 'S-02', title: 'Quality Control', desc: 'GSM verification, roll mapping and pre-dispatch inspection records on every consignment.' },
   { n: 'S-03', title: 'Export Documentation', desc: 'Commercial invoice, packing list, certificate of origin, bill of lading — prepared in-house, checked twice.' },
   { n: 'S-04', title: 'Logistics Coordination', desc: 'Road to Nepal and Bangladesh, sea via Nhava Sheva and Mundra, air for urgent lots. LCL and FCL, consolidated multi-item loads.' },
 ];
