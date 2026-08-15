@@ -18,7 +18,7 @@ export const Footer = () => (
         <div className="md:col-span-5">
           <img src="/assets/logo-white.png" alt="HemSambhav Impex" className="h-11 w-auto" data-testid="footer-logo" />
           <p className="mt-7 max-w-sm font-serif text-2xl italic leading-snug text-paper/85">
-            Possibility to Prosperity — two parties, one unbreakable connection.
+            Possibility to Prosperity
           </p>
           <p className="mt-7 font-mono text-[11px] uppercase tracking-[0.2em] text-paper/45">
             Export division of {CONTACT.parent}
@@ -75,14 +75,14 @@ export const Footer = () => (
               data-testid="footer-indiamart-link"
               className="inline-flex items-center gap-2 opacity-90 transition-opacity hover:opacity-100"
             >
-              <img src="/assets/indiamart-logo.webp" alt="IndiaMART" className="h-9 w-auto" data-testid="footer-indiamart-logo" />
+              <img src="/assets/indiamart-logo.webp" alt="IndiaMART" className="h-11 w-auto" data-testid="footer-indiamart-logo" />
               <ArrowUpRight size={14} className="text-paper/50" />
             </a>
           </div>
         </div>
       </div>
       <div className="flex flex-col gap-6 py-9 md:flex-row md:items-center md:justify-between" data-testid="footer-credentials">
-        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40" data-testid="footer-gstin">
+        <p className="font-mono text-xs uppercase tracking-[0.2em] text-paper/40" data-testid="footer-gstin">
           <span style={{ color: GOLD }}>GSTIN:</span> 24ACZPZ0645H1ZY
         </p>
         <div className="flex flex-col gap-3 md:items-end">
@@ -99,7 +99,7 @@ export const Footer = () => (
       </div>
       <div className="flex flex-col gap-3 border-t border-paper/10 py-6 font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40 md:flex-row md:items-center md:justify-between">
         <p data-testid="footer-copy">© {new Date().getFullYear()} HemSambhav Impex · Surat, Gujarat, India</p>
-        <p>MOQ {CONTACT.moq} · Flocked / Weaving / Knitting</p>
+        <p data-testid="footer-range">Flocked / Weaving / Knitting</p>
       </div>
     </div>
   </footer>
