@@ -29,6 +29,14 @@ export const IMAGES = {
 
 export const CATEGORIES = [
   {
+    id: 'weaving',
+    name: 'Weaving Velvet',
+    code: 'WVN',
+    description:
+      'Loom-woven pile constructions with depth, drape and durability for upholstery, apparel and furnishing.',
+    image: '/assets/products/micro-11000-falcon.jpg',
+  },
+  {
     id: 'flocked',
     name: 'Flocked Velvet',
     code: 'FLK',
@@ -37,20 +45,12 @@ export const CATEGORIES = [
     image: '/assets/products/galaxy-velvet.jpg',
   },
   {
-    id: 'weaving',
-    name: 'Weaving Velvet',
-    code: 'WVN',
-    description:
-      'Loom-woven pile constructions with depth, drape and durability for upholstery, apparel and furnishing.',
-    image: '/assets/products/holland-velvet.jpg',
-  },
-  {
     id: 'knitting',
-    name: 'Knitting Velvet',
-    code: 'KNT',
+    name: 'Raising Velvet',
+    code: 'RSG',
     description:
-      'Fine micro-knitted velvets with a smooth face and natural stretch — garment and lining specialists.',
-    image: '/assets/products/micro-11000-falcon.jpg',
+      'Raised-pile knitted velvets with deep, sculptural texture for apparel and furnishing.',
+    image: '/assets/products/raising-velvet.jpg',
   },
 ];
 
@@ -85,10 +85,10 @@ export const SPECS_BY_CAT = {
     width: '54–58 in (137–147 cm)',
   },
   knitting: {
-    construction: 'Micro-knitted pile',
-    composition: 'Polyester micro / viscose blends',
-    gsm: '180–300',
-    width: '58–60 in (147–152 cm)',
+    construction: 'Raised-pile knitted construction',
+    composition: 'Polyester / poly-viscose blends',
+    gsm: '220–380',
+    width: '54–58 in (137–147 cm)',
   },
 };
 

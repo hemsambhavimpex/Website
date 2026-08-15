@@ -1,4 +1,5 @@
 // Static product catalog — single source of truth (was MongoDB; frozen at static conversion)
+// Static product catalog — single source of truth (was MongoDB; frozen at static conversion)
 export const PRODUCTS = [
   {
     "slug": "coco-velvet",
@@ -177,7 +178,7 @@ export const PRODUCTS = [
   {
     "slug": "twilight",
     "name": "Twilight",
-    "cat": "weaving",
+    "cat": "knitting",
     "variants": "Woven · FD Full Dull",
     "desc": "Woven full-dull pile with a matte, understated lustre.",
     "uses": [
@@ -197,7 +198,7 @@ export const PRODUCTS = [
   {
     "slug": "holland-velvet",
     "name": "Holland Velvet",
-    "cat": "weaving",
+    "cat": "knitting",
     "variants": "Woven",
     "desc": "Classic woven upholstery velvet with a dense, even pile.",
     "uses": [
@@ -217,7 +218,7 @@ export const PRODUCTS = [
   {
     "slug": "kabul-velvet",
     "name": "Kabul Velvet",
-    "cat": "weaving",
+    "cat": "knitting",
     "variants": "Woven",
     "desc": "Heavy woven construction suited to furnishings and statement décor.",
     "uses": [
@@ -237,7 +238,7 @@ export const PRODUCTS = [
   {
     "slug": "lycra-velvet",
     "name": "Lycra Velvet",
-    "cat": "weaving",
+    "cat": "knitting",
     "variants": "Stretch",
     "desc": "Stretch woven velvet engineered for form-fitting apparel.",
     "uses": [
@@ -257,7 +258,7 @@ export const PRODUCTS = [
   {
     "slug": "mosha-velvet",
     "name": "Mosha Velvet",
-    "cat": "weaving",
+    "cat": "knitting",
     "variants": "Woven",
     "desc": "Soft woven pile with a brushed, peached surface.",
     "uses": [
@@ -276,7 +277,7 @@ export const PRODUCTS = [
   {
     "slug": "raising-velvet",
     "name": "Raising Velvet",
-    "cat": "weaving",
+    "cat": "knitting",
     "variants": "Woven",
     "desc": "Raised-pile woven velvet with deep, sculptural texture.",
     "uses": [
@@ -294,7 +295,7 @@ export const PRODUCTS = [
   {
     "slug": "brasso-velvet",
     "name": "Brasso Velvet",
-    "cat": "knitting",
+    "cat": "weaving",
     "variants": "Burn-out",
     "desc": "Burn-out knitted velvet with patterned sheer contrast.  ",
     "uses": [
@@ -309,7 +310,7 @@ export const PRODUCTS = [
   {
     "slug": "micro-11000-falcon",
     "name": "Micro 11000 (Falcon Velvet)",
-    "cat": "knitting",
+    "cat": "weaving",
     "variants": "Micro knit",
     "desc": "High-density micro knit — our flagship “Falcon” quality.",
     "uses": [
@@ -328,7 +329,7 @@ export const PRODUCTS = [
   {
     "slug": "micro-9000-velvet",
     "name": "Micro 9000 Velvet",
-    "cat": "knitting",
+    "cat": "weaving",
     "variants": "Micro knit",
     "desc": "Fine micro knitted velvet for garments and precision lining.",
     "uses": [
@@ -349,7 +350,7 @@ export const PRODUCTS = [
   {
     "slug": "micro-velvet-99999",
     "name": "Micro Velvet 99999",
-    "cat": "knitting",
+    "cat": "weaving",
     "variants": "Micro knit",
     "desc": "Premium micro knit with an exceptionally smooth face.",
     "uses": [
@@ -366,7 +367,7 @@ export const PRODUCTS = [
   {
     "slug": "viscose-velvet",
     "name": "Viscose Velvet",
-    "cat": "knitting",
+    "cat": "weaving",
     "variants": "Viscose blend",
     "desc": "Viscose-blend knitted velvet with a natural, fluid sheen.",
     "uses": [

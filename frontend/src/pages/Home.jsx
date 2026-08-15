@@ -95,15 +95,6 @@ const Home = () => {
                 />
                 <div className="absolute inset-0 bg-navy/20 mix-blend-multiply" />
               </motion.div>
-              <motion.p
-                className="mt-3 flex justify-between font-mono text-[10px] uppercase tracking-[0.22em] text-navy/60"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.3 }}
-              >
-                <span>Fig. 01 — Flocked Velvet, Navy</span>
-                <span>Lot / HS-1990</span>
-              </motion.p>
               <div className="absolute -left-4 -top-4 -z-10 hidden h-full w-full border border-rust/50 lg:block" />
             </div>
           </div>

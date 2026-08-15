@@ -1,4 +1,5 @@
 // Static gallery tiles (was MongoDB; frozen at static conversion)
+// Static gallery tiles (was MongoDB; frozen at static conversion)
 export const GALLERY_TILES = [
   {
     "img": "/assets/products/galaxy-velvet.jpg",
@@ -42,7 +43,7 @@ export const GALLERY_TILES = [
   },
   {
     "img": "/assets/products/holland-velvet.jpg",
-    "cat": "weaving",
+    "cat": "knitting",
     "label": "Weaving — Holland, 180 GSM",
     "aspect": "aspect-[4/3]",
     "id": "09dcca98c00a",
@@ -50,7 +51,7 @@ export const GALLERY_TILES = [
   },
   {
     "img": "/assets/products/twilight.jpg",
-    "cat": "weaving",
+    "cat": "knitting",
     "label": "Weaving — Twilight, FD full-dull",
     "aspect": "aspect-[3/4]",
     "id": "9c9153545120",
@@ -58,7 +59,7 @@ export const GALLERY_TILES = [
   },
   {
     "img": "/assets/products/raising-velvet.jpg",
-    "cat": "weaving",
+    "cat": "knitting",
     "label": "Weaving — Raised pile detail",
     "aspect": "aspect-square",
     "id": "092daec99df0",
@@ -66,7 +67,7 @@ export const GALLERY_TILES = [
   },
   {
     "img": "/assets/products/lycra-velvet.jpg",
-    "cat": "weaving",
+    "cat": "knitting",
     "label": "Weaving — Lycra, embossed",
     "aspect": "aspect-[3/4]",
     "id": "df44ffef330c",
@@ -74,7 +75,7 @@ export const GALLERY_TILES = [
   },
   {
     "img": "/assets/products/micro-11000-falcon.jpg",
-    "cat": "knitting",
+    "cat": "weaving",
     "label": "Knitting — Micro 11000 “Falcon”",
     "aspect": "aspect-square",
     "id": "309a89e4042b",
@@ -82,7 +83,7 @@ export const GALLERY_TILES = [
   },
   {
     "img": "/assets/products/micro-9000-velvet.jpg",
-    "cat": "knitting",
+    "cat": "weaving",
     "label": "Knitting — Micro 9000 selvedge",
     "aspect": "aspect-[3/4]",
     "id": "b8343b533d3c",
@@ -90,7 +91,7 @@ export const GALLERY_TILES = [
   },
   {
     "img": "/assets/products/viscose-velvet.jpg",
-    "cat": "knitting",
+    "cat": "weaving",
     "label": "Knitting — Viscose drape",
     "aspect": "aspect-[4/3]",
     "id": "3799f5977a5c",
