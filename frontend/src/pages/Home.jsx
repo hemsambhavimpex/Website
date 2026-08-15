@@ -88,8 +88,8 @@ const Home = () => {
                 data-testid="hero-image-frame"
               >
                 <motion.img
-                  src={IMAGES.heroVelvet}
-                  alt="Premium navy velvet fabric texture"
+                  src="/assets/general/hero-main.webp"
+                  alt="Premium velvet fabric in rich export shades"
                   className="h-[115%] w-full object-cover"
                   style={{ y: heroImgY, scale: 1.12 }}
                 />
