@@ -1,8 +1,8 @@
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { MaskedLines, Reveal } from '../components/Reveal';
-import { BLOG_POSTS as STATIC_POSTS, postImage } from '../data/catalog';
-import { usePosts } from '../hooks/usePosts';
+import { BLOG_POSTS } from '../data/posts';
+import { postImage } from '../data/catalog';
 import { useSEO } from '../hooks/useSEO';
 
 const fmt = (d) =>
@@ -10,7 +10,6 @@ const fmt = (d) =>
 
 const BlogPost = () => {
   const { slug } = useParams();
-  const BLOG_POSTS = usePosts();
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   useSEO(
     post ? `${post.title} | HemSambhav Impex` : 'Trade Journal | HemSambhav Impex',

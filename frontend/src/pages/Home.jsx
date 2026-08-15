@@ -3,8 +3,8 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { MaskedLines, Reveal } from '../components/Reveal';
 import { EditorialMarquee } from '../components/EditorialMarquee';
-import { IMAGES, CATEGORIES, MARKETS, END_USES, PRODUCTS as STATIC_PRODUCTS, CONTACT } from '../data/catalog';
-import { useProducts } from '../hooks/useProducts';
+import { IMAGES, CATEGORIES, MARKETS, END_USES, CONTACT } from '../data/catalog';
+import { PRODUCTS } from '../data/products';
 import { useSEO } from '../hooks/useSEO';
 
 const WHY = [
@@ -23,7 +23,6 @@ const META = [
 
 const Home = () => {
   useSEO('HemSambhav Impex — Premium Velvet Export · Surat, India', 'Export division of JK Velvet (est. 1990). Mill-direct flocked, weaving and knitting velvet shipped to Nepal, Bangladesh, UAE, UK and beyond. MOQ from 150 m.');
-  const PRODUCTS = useProducts();
   const { scrollY } = useScroll();
   const heroImgY = useTransform(scrollY, [0, 900], [0, 140]);
   const bandY = useTransform(scrollY, [1600, 3200], [-80, 80]);

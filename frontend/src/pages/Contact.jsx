@@ -1,14 +1,15 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import axios from 'axios';
 import { toast } from 'sonner';
 import { ArrowUpRight, Mail, Phone, MapPin, CheckCircle2 } from 'lucide-react';
 import { PageHero, Reveal } from '../components/Reveal';
-import { PRODUCTS as STATIC_PRODUCTS, CATEGORIES, END_USES, CONTACT } from '../data/catalog';
-import { useProducts } from '../hooks/useProducts';
+import { CATEGORIES, END_USES, CONTACT } from '../data/catalog';
+import { PRODUCTS } from '../data/products';
 import { useSEO } from '../hooks/useSEO';
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+// Static-compatible form delivery: FormSubmit AJAX → contact@hemsambhavimpex.com
+// (one-time activation email on first submission; no API key exposed)
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/contact@hemsambhavimpex.com';
 
 const Field = ({ label, id, children }) => (
   <div>
@@ -19,7 +20,6 @@ const Field = ({ label, id, children }) => (
 
 const Contact = () => {
   useSEO('Request a Quote — Contact | HemSambhav Impex', 'Tell us your velvet construction, quantity and destination port. The export desk at JK House, Surat replies within one business day.');
-  const PRODUCTS = useProducts();
   const [params] = useSearchParams();
   const [form, setForm] = useState({
     full_name: '',
@@ -40,7 +40,22 @@ const Contact = () => {
     e.preventDefault();
     setSending(true);
     try {
-      await axios.post(`${API}/inquiries`, form);
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          _subject: `Export Inquiry — ${form.product || 'General'} — ${form.full_name}`,
+          'Full Name': form.full_name,
+          'Company': form.company_name,
+          'Email': form.email,
+          'Phone / WhatsApp': form.phone,
+          'Country / Destination Port': form.country,
+          'Product of Interest': form.product,
+          'Estimated Quantity': form.quantity,
+          'Message': form.message,
+        }),
+      });
+      if (!res.ok) throw new Error('send failed');
       setSent(true);
       toast.success('Inquiry sent — the manifest desk will reply within one business day.');
     } catch (err) {

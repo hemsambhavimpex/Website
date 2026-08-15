@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { PageHero, Reveal } from '../components/Reveal';
-import { BLOG_POSTS as STATIC_POSTS } from '../data/catalog';
-import { usePosts } from '../hooks/usePosts';
+import { BLOG_POSTS } from '../data/posts';
 import { useSEO } from '../hooks/useSEO';
 
 const fmt = (d) =>
@@ -10,7 +9,6 @@ const fmt = (d) =>
 
 const Blog = () => {
   useSEO('The Trade Journal — Velvet & Export Notes | HemSambhav Impex', 'Velvet constructions, bulk-order checklists and export documentation guides for fabric buyers — from the HemSambhav Impex manifest desk.');
-  const BLOG_POSTS = usePosts();
   return (
   <div data-testid="blog-page">
     <PageHero

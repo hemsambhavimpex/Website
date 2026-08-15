@@ -54,29 +54,6 @@ export const CATEGORIES = [
   },
 ];
 
-export const PRODUCTS = [
-  { slug: 'coco-velvet', name: 'Coco Velvet', cat: 'flocked', variants: 'Plain', desc: 'Rich flocked pile with a warm, coco-toned depth — favoured for premium box linings.', uses: ['Jewelry & Fancy Boxes', 'Gift & Décor Boxes'], specs: { composition: 'Warp-knit polyester velvet', gsm: '170 ±10%', width: '54 in (137 cm)', roll: '25 m rolls', moq: '250 m' }, photo: 'coco-velvet.jpg', img: 'jewelBox' },
-  { slug: 'cloud-design-velvet', name: 'Cloud Design Velvet', cat: 'flocked', variants: 'Embossed design', desc: 'Soft flocked base carrying embossed cloud motifs for gift and décor packaging.', uses: ['Gift & Décor Boxes'], specs: { composition: 'Custom base fabric, flocked', gsm: '150–300', width: '44 in & 56 in (112/142 cm)', roll: '50 m rolls', moq: '1,000 m (10,000 m for custom design)' }, photo: 'cloud-design-velvet.jpg', img: 'giftKraft' },
-  { slug: 'furry-velvet', name: 'Furry Velvet', cat: 'flocked', variants: 'High loft', desc: 'High-loft flocked surface with a plush, tactile hand-feel.', uses: ['Upholstery', 'Gift & Décor Boxes'], specs: { gsm: '180 ±10%', roll: '25 m rolls', moq: '250 m per colour / parcel' }, photo: 'furry-velvet.jpg', img: 'sofaOrange' },
-  { slug: 'galaxy-velvet', name: 'Galaxy Velvet', cat: 'flocked', variants: 'Plain & Embossed', desc: 'Shimmer-flecked flocked velvet, available in plain and embossed finishes.', uses: ['Jewelry & Fancy Boxes', 'Textile & Apparel'], specs: { gsm: '180 ±10%', roll: '70–90 m rolls', moq: '~210 m per colour' }, photo: 'galaxy-velvet.jpg', img: 'jewelGold' },
-  { slug: 'gota-design-velvet', name: 'Gota Design Velvet', cat: 'flocked', variants: 'Design', desc: 'Traditional gota-inspired patterns flocked for festive and ethnic applications.', uses: ['Textile & Apparel', 'Gift & Décor Boxes'], specs: { width: '44 in (112 cm)', roll: 'Stock lots', moq: '300 m per design/colour (stock) · 900 m production lot' }, photo: 'gota-design-velvet.jpg', img: 'saree' },
-  { slug: 'korean-velvet', name: 'Korean Velvet', cat: 'flocked', variants: 'Plain', desc: 'Fine, dense flocked pile with a smooth, even face for apparel and upholstery.', uses: ['Textile & Apparel', 'Upholstery'], specs: { gsm: '220 ±10%', roll: '50 m rolls', moq: '150 m' }, photo: 'korean-velvet.jpg', img: 'fabricRack' },
-  { slug: 'non-woven-velvet', name: 'Non-Woven Velvet', cat: 'flocked', variants: 'Plain & Embossed', desc: 'Flocked non-woven base in plain and embossed options — the box-maker’s staple.', uses: ['Jewelry & Fancy Boxes', 'Gift & Décor Boxes'], specs: { composition: 'Flocked pile on non-woven base', gsm: '110', width: '60 in (152 cm)', roll: '50 m rolls', moq: '250 m per parcel (5 rolls)' }, photo: 'non-woven-velvet.jpg', img: 'giftPink' },
-  { slug: 'pvc-velvet', name: 'PVC Velvet', cat: 'flocked', variants: 'Plain', desc: 'Flocked PVC base — durable and wipeable, built for footwear and bags.', uses: ['Footwear'], specs: { roll: '50 m rolls', moq: '3 rolls per parcel per colour · 500 m custom colour' }, photo: 'pvc-velvet.jpg', img: 'sneaker' },
-  { slug: 'taffeta-velvet', name: 'Taffeta Velvet', cat: 'flocked', variants: 'Plain', desc: 'Crisp taffeta-backed flocking with a structured hand and clean drape.', uses: ['Textile & Apparel', 'Gift & Décor Boxes'], specs: { width: '44 in (112 cm)', roll: '60–100 m rolls', moq: '300 m per parcel' }, photo: 'taffeta-velvet.jpg', img: 'dressFlow' },
-  { slug: 'twilight', name: 'Twilight', cat: 'weaving', variants: 'Woven · FD Full Dull', desc: 'Woven full-dull pile with a matte, understated lustre.', uses: ['Upholstery', 'Textile & Apparel'], specs: { width: '54 in (137 cm)', roll: '70–100 m rolls', moq: '1 roll' }, photo: 'twilight.jpg', img: 'sofaGrey' },
-  { slug: 'holland-velvet', name: 'Holland Velvet', cat: 'weaving', variants: 'Woven', desc: 'Classic woven upholstery velvet with a dense, even pile.', uses: ['Upholstery'], specs: { composition: '100% polyester, woven', gsm: '180', width: '56 in (142 cm)', roll: '50–70 m rolls', moq: '250 m' }, photo: 'holland-velvet.jpg', img: 'sofaGreen' },
-  { slug: 'kabul-velvet', name: 'Kabul Velvet', cat: 'weaving', variants: 'Woven', desc: 'Heavy woven construction suited to furnishings and statement décor.', uses: ['Upholstery', 'Gift & Décor Boxes'], specs: { gsm: '110 ±10%', width: '54 in (137 cm)', roll: '30 m rolls', moq: '15 rolls / 450 m' }, photo: 'kabul-velvet.jpg', img: 'bedroomLuxe' },
-  { slug: 'lycra-velvet', name: 'Lycra Velvet', cat: 'weaving', variants: 'Stretch', desc: 'Stretch woven velvet engineered for form-fitting apparel.', uses: ['Textile & Apparel'], specs: { composition: 'Polyester–Lycra blend, woven', gsm: '125–220', width: '58–60 in (147–152 cm)', roll: '~20 kg rolls', moq: '40 kg (2 rolls)' }, photo: 'lycra-velvet.jpg', img: 'flatlayDenim' },
-  { slug: 'mosha-velvet', name: 'Mosha Velvet', cat: 'weaving', variants: 'Woven', desc: 'Soft woven pile with a brushed, peached surface.', uses: ['Textile & Apparel', 'Upholstery'], specs: { gsm: '220 ±10%', roll: '70–110 m rolls', moq: '1 roll' }, photo: 'mosha-velvet.jpg', img: 'bedroom' },
-  { slug: 'raising-velvet', name: 'Raising Velvet', cat: 'weaving', variants: 'Woven', desc: 'Raised-pile woven velvet with deep, sculptural texture.', uses: ['Upholstery'], specs: { gsm: '115 ±5%', roll: '70–80 m rolls', moq: '3 rolls per parcel · min 700 m per colour/design' }, photo: 'raising-velvet.jpg', img: 'chairYellow' },
-  { slug: 'brasso-velvet', name: 'Brasso Velvet', cat: 'knitting', variants: 'Burn-out', desc: 'Burn-out knitted velvet with patterned sheer contrast.', uses: ['Textile & Apparel'], stock: 'out', photo: 'brasso-velvet.jpg', img: 'denimStack' },
-  { slug: 'micro-11000-falcon', name: 'Micro 11000 (Falcon Velvet)', cat: 'knitting', variants: 'Micro knit', desc: 'High-density micro knit — our flagship “Falcon” quality.', uses: ['Textile & Apparel', 'Jewelry & Fancy Boxes'], specs: { gsm: '150 ±5%', roll: '40–60 m per than', moq: '1,000 m per colour' }, photo: 'micro-11000-falcon.jpg', img: 'blackTexture' },
-  { slug: 'micro-9000-velvet', name: 'Micro 9000 Velvet', cat: 'knitting', variants: 'Micro knit', desc: 'Fine micro knitted velvet for garments and precision lining.', uses: ['Textile & Apparel', 'Jewelry & Fancy Boxes'], specs: { composition: 'Polyester base, micro knit', gsm: '130', width: '44 in & 54 in (112/137 cm)', roll: '40–80 m folded rolls', moq: '~300 m per parcel' }, photo: 'micro-9000-velvet.jpg', img: 'jewelGold' },
-  { slug: 'micro-velvet-99999', name: 'Micro Velvet 99999', cat: 'knitting', variants: 'Micro knit', desc: 'Premium micro knit with an exceptionally smooth face.', uses: ['Textile & Apparel', 'Upholstery'], specs: { moq: '1,000 m per colour' }, photo: 'micro-velvet-99999.jpg', img: 'livingRoom' },
-  { slug: 'viscose-velvet', name: 'Viscose Velvet', cat: 'knitting', variants: 'Viscose blend', desc: 'Viscose-blend knitted velvet with a natural, fluid sheen.', uses: ['Textile & Apparel'], specs: { moq: '1,000 m per lot per colour' }, photo: 'viscose-velvet.jpg', img: 'dressFlow' },
-];
-
 export const END_USES = [
   { name: 'Jewelry & Fancy Boxes', desc: 'Flocked interiors and coverings that make small objects feel precious.', img: 'jewelBox' },
   { name: 'Footwear', desc: 'PVC and flocked velvets built to flex, last and finish cleanly.', img: 'sneaker' },
@@ -92,61 +69,6 @@ export const MARKETS = [
   { country: 'United Arab Emirates', port: 'Jebel Ali, Dubai', mode: 'Sea', terms: 'FCL & LCL' },
   { country: 'United Kingdom', port: 'Felixstowe / London Gateway', mode: 'Sea', terms: 'FCL & LCL' },
   { country: 'Other destinations', port: 'On request', mode: 'Sea / Air', terms: 'Worldwide, ex Nhava Sheva & Mundra' },
-];
-
-export const BLOG_POSTS = [
-  {
-    slug: 'flocked-vs-woven-vs-knitted-velvet',
-    title: 'Flocked, Woven or Knitted: Choosing the Right Velvet Construction',
-    date: '2026-06-18',
-    category: 'Fabric Guide',
-    excerpt: 'Three constructions, three very different behaviours. Here is how bulk buyers should think about pile, base and end-use before requesting a quote.',
-    img: 'heroVelvet',
-    body: [
-      'Velvet is not one fabric — it is a family of constructions that happen to share a pile surface. The three you will encounter most in export trade are flocked, woven and knitted velvet, and confusing them is the fastest way to a disappointing bulk order.',
-      'Flocked velvet is made by electrostatically standing short fibres on an adhesive-coated base — fabric, non-woven or PVC. It excels in box-making, footwear and décor because it is uniform, economical at volume, and takes embossing beautifully. Woven velvet is created on the loom itself, giving it superior depth, drape and durability — the right call for upholstery and apparel. Knitted velvet, especially micro deniers like our Micro 11000 and Micro 9000, offers stretch and a smooth face that garment makers love.',
-      'When you write to us for a quote, tell us the end-use first. “Velvet for ring boxes, 250 metres” will get you a faster, sharper answer than “velvet, best price” — because construction follows purpose, and price follows construction.',
-    ],
-  },
-  {
-    slug: 'five-checks-before-bulk-velvet-order',
-    title: '5 Things to Check Before Placing a Bulk Velvet Order',
-    date: '2026-05-30',
-    category: 'Export Tips',
-    excerpt: 'Shade bands, pile direction, GSM tolerance, roll length and packing — the five details that decide whether your container delights or disappoints.',
-    img: 'flatlayDenim',
-    body: [
-      'Bulk fabric buying rewards the specific. Before you confirm a purchase order, lock down five things: the exact shade (ask for a lab dip or strike-off under D65 light), the pile direction and whether your cutting plan accounts for it, the GSM tolerance you will accept, the roll length and roll count per bale, and the packing standard — polybag, tube-rolled or bale-pressed.',
-      'Each of these is a one-line clause in your proforma invoice, and each one prevents a category of dispute. Pile direction alone has ruined more garment consignments than any shipping delay.',
-      'At HemSambhav Impex we document all five on every PI as standard. If your current supplier does not, ask them to — or ask us for a comparative quote.',
-    ],
-  },
-  {
-    slug: 'why-250-metre-moq-works',
-    title: 'Understanding MOQs in Fabric Export: Why 250 Metres Works',
-    date: '2026-04-22',
-    category: 'Industry Notes',
-    excerpt: 'Minimum order quantities are not a barrier — they are how mills keep your price honest. A short note on the economics behind our 250-metre MOQ.',
-    img: 'containerYard',
-    body: [
-      'Every fabric program has a fixed cost that exists whether we run 25 metres or 2,500: colour matching, machine setup, pile calibration and quality inspection. A minimum order quantity spreads that fixed cost across enough metres to keep your per-metre price meaningful.',
-      'Our MOQ is 250 metres per item — one of the most accessible thresholds in Surat’s velvet trade. For a box manufacturer, that is roughly a full season of one SKU; for an apparel buyer, a solid pilot run. It lets you test a market without warehousing a container.',
-      'If you are between MOQs on multiple items, talk to us about consolidated shipments. Buyers in Nepal, Bangladesh, the UAE and the UK routinely combine three or four constructions in a single dispatch to keep freight efficient.',
-    ],
-  },
-  {
-    slug: 'export-documentation-loom-to-loading-bay',
-    title: 'From Loom to Loading Bay: How Export Documentation Protects Your Shipment',
-    date: '2026-03-15',
-    category: 'Export Tips',
-    excerpt: 'Commercial invoice, packing list, certificate of origin, bill of lading — what each document does and why disciplined paperwork is a buyer’s best insurance.',
-    img: 'cargoShip',
-    body: [
-      'Ask any experienced importer what separates a smooth consignment from a stuck one and they will give you the same answer: paperwork. The commercial invoice establishes value for customs; the packing list lets your broker and the port agree on what is actually inside; the certificate of origin can unlock preferential duty; and the bill of lading is title to your goods while they cross the water.',
-      'Because HemSambhav Impex is the dedicated export division of JK Velvet — a mill that has run since 1990 — documentation is not an afterthought bolted onto a trader’s desk. QC reports, roll maps and packing lists are generated from the same production run that made your fabric.',
-      'When you request a quote, tell us your destination port and Incoterm preference. We will return not just a price, but a document checklist for your specific lane — so there are no surprises between Surat and your warehouse.',
-    ],
-  },
 ];
 
 export const SPECS_BY_CAT = {
@@ -185,10 +107,10 @@ export const SHADE_CARD = [
   ['Rosewood', '#7A3B3B'], ['Teal', '#14505C'], ['Jet Black', '#111111'],
 ];
 
-// Photos: local /assets/products/<slug>.jpg files, or admin-uploaded /api/uploads/* URLs
+// Photos: local /assets/products/<slug>.jpg files
 export const productImage = (p) => {
   if (!p.photo) return IMAGES[p.img] || IMAGES.fabricRack;
-  if (p.photo.startsWith('/api/') || p.photo.startsWith('http')) return p.photo;
+  if (p.photo.startsWith('/') || p.photo.startsWith('http')) return p.photo;
   return `/assets/products/${p.photo}`;
 };
 

@@ -1,32 +1,14 @@
 import { useState } from 'react';
 import { PageHero, Reveal } from '../components/Reveal';
-import { IMAGES, CATEGORIES, galleryImage } from '../data/catalog';
-import { useGallery } from '../hooks/useGallery';
+import { CATEGORIES, galleryImage } from '../data/catalog';
+import { GALLERY_TILES } from '../data/gallery';
 import { useSEO } from '../hooks/useSEO';
-
-const P = (slug) => `/assets/products/${slug}.jpg`;
-
-const STATIC_TILES = [
-  { img: P('galaxy-velvet'), cat: 'flocked', label: 'Flocked — Galaxy, embossed', aspect: 'aspect-[3/4]' },
-  { img: P('non-woven-velvet'), cat: 'flocked', label: 'Flocked — Non-woven, box lining', aspect: 'aspect-square' },
-  { img: P('cloud-design-velvet'), cat: 'flocked', label: 'Flocked — Cloud design face', aspect: 'aspect-[4/3]' },
-  { img: P('pvc-velvet'), cat: 'flocked', label: 'Flocked — PVC base for footwear', aspect: 'aspect-[4/3]' },
-  { img: P('gota-design-velvet'), cat: 'flocked', label: 'Flocked — Gota design, festive', aspect: 'aspect-[3/4]' },
-  { img: P('holland-velvet'), cat: 'weaving', label: 'Weaving — Holland, 180 GSM', aspect: 'aspect-[4/3]' },
-  { img: P('twilight'), cat: 'weaving', label: 'Weaving — Twilight, FD full-dull', aspect: 'aspect-[3/4]' },
-  { img: P('raising-velvet'), cat: 'weaving', label: 'Weaving — Raised pile detail', aspect: 'aspect-square' },
-  { img: P('lycra-velvet'), cat: 'weaving', label: 'Weaving — Lycra, embossed', aspect: 'aspect-[3/4]' },
-  { img: P('micro-11000-falcon'), cat: 'knitting', label: 'Knitting — Micro 11000 “Falcon”', aspect: 'aspect-square' },
-  { img: P('micro-9000-velvet'), cat: 'knitting', label: 'Knitting — Micro 9000 selvedge', aspect: 'aspect-[3/4]' },
-  { img: P('viscose-velvet'), cat: 'knitting', label: 'Knitting — Viscose drape', aspect: 'aspect-[4/3]' },
-  { img: 'loom', cat: 'craft', label: 'The floor — Surat, since 1990', aspect: 'aspect-square' },
-];
 
 const FILTERS = [{ id: 'all', name: 'All' }, ...CATEGORIES.map((c) => ({ id: c.id, name: c.name })), { id: 'craft', name: 'The Mill' }];
 
 const Gallery = () => {
   useSEO('Gallery — Velvet Texture Archive | HemSambhav Impex', 'Real mill photography of JK Velvet fabrics — flocked, weaving and knitting velvet textures from the Surat floor.');
-  const TILES = useGallery(STATIC_TILES);
+  const TILES = GALLERY_TILES;
   const [filter, setFilter] = useState('all');
   const shown = filter === 'all' ? TILES : TILES.filter((t) => t.cat === filter);
 

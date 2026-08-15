@@ -2,14 +2,13 @@ import { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { PageHero, Reveal } from '../components/Reveal';
-import { PRODUCTS as STATIC_PRODUCTS, CATEGORIES, END_USES, CONTACT, productImage } from '../data/catalog';
-import { useProducts } from '../hooks/useProducts';
+import { CATEGORIES, END_USES, CONTACT, productImage } from '../data/catalog';
+import { PRODUCTS } from '../data/products';
 import { useSEO } from '../hooks/useSEO';
 
 const Products = () => {
   useSEO('Export Catalog — 20 Velvet Fabrics | HemSambhav Impex', 'Flocked, weaving and knitting velvet for export — real mill specs, per-fabric MOQs and downloadable shade cards. Mill-direct from JK Velvet, Surat.');
   const [params] = useSearchParams();
-  const PRODUCTS = useProducts();
   const initial = CATEGORIES.some((c) => c.id === params.get('cat')) ? params.get('cat') : 'all';
   const [filter, setFilter] = useState(initial);
 
