@@ -48,24 +48,27 @@ export const Footer = () => (
           <a href={`tel:${CONTACT.phoneHref}`} data-testid="footer-phone" className="mt-2 block text-sm text-paper/70 transition-colors hover:text-rust-light">
             {CONTACT.phone}
           </a>
-          <a
-            href={CONTACT.parentUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            data-testid="footer-parent-link"
-            className="mt-6 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-rust-light hover:text-paper"
-          >
-            jkvelvet.com <ArrowUpRight size={13} />
-          </a>
-          <a
-            href="https://www.indiamart.com/company/234275677/"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-testid="footer-indiamart-link"
-            className="mt-3 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-paper/60 hover:text-rust-light"
-          >
-            IndiaMART <ArrowUpRight size={13} />
-          </a>
+          <div className="mt-6 flex items-center gap-7">
+            <a
+              href={CONTACT.parentUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="footer-parent-link"
+              className="inline-flex items-center opacity-90 transition-opacity hover:opacity-100"
+            >
+              <img src="/assets/jk-velvet-logo.webp" alt="JK Velvet — parent brand" className="h-7 w-auto" data-testid="footer-jkvelvet-logo" />
+            </a>
+            <a
+              href="https://www.indiamart.com/company/234275677/"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="footer-indiamart-link"
+              className="inline-flex items-center gap-1.5 opacity-90 transition-opacity hover:opacity-100"
+            >
+              <img src="/assets/indiamart-logo.webp" alt="IndiaMART" className="h-7 w-auto" data-testid="footer-indiamart-logo" />
+              <ArrowUpRight size={13} className="text-paper/50" />
+            </a>
+          </div>
         </div>
       </div>
       <div className="flex flex-col gap-4 border-t border-paper/10 pt-6 md:flex-row md:items-center md:justify-between" data-testid="footer-credentials">
@@ -74,11 +77,11 @@ export const Footer = () => (
         </p>
         <div className="flex items-center gap-3">
           <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-paper/35">Credentials</span>
-          <span className="inline-flex items-center border border-paper/10 bg-paper px-3 py-2" data-testid="footer-sgcci-logo">
-            <img src="/assets/sgcci-logo.png" alt="SGCCI — The Southern Gujarat Chamber of Commerce & Industry" className="h-6 w-auto" />
+          <span className="inline-flex items-center border border-paper/10 bg-paper px-4 py-2.5" data-testid="footer-sgcci-logo">
+            <img src="/assets/sgcci-logo.png" alt="SGCCI — The Southern Gujarat Chamber of Commerce & Industry" className="h-[42px] w-auto" />
           </span>
-          <span className="inline-flex items-center border border-paper/10 bg-paper px-3 py-2" data-testid="footer-msme-logo">
-            <img src="/assets/msme-logo.png" alt="Ministry of Micro, Small & Medium Enterprises, Government of India" className="h-6 w-auto" />
+          <span className="inline-flex items-center border border-paper/10 bg-paper px-4 py-2.5" data-testid="footer-msme-logo">
+            <img src="/assets/msme-logo.png" alt="Ministry of Micro, Small & Medium Enterprises, Government of India" className="h-[42px] w-auto" />
           </span>
         </div>
       </div>
