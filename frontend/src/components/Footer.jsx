@@ -57,6 +57,29 @@ export const Footer = () => (
           >
             jkvelvet.com <ArrowUpRight size={13} />
           </a>
+          <a
+            href="https://www.indiamart.com/company/234275677/"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="footer-indiamart-link"
+            className="mt-3 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.2em] text-paper/60 hover:text-rust-light"
+          >
+            IndiaMART <ArrowUpRight size={13} />
+          </a>
+        </div>
+      </div>
+      <div className="flex flex-col gap-4 border-t border-paper/10 pt-6 md:flex-row md:items-center md:justify-between" data-testid="footer-credentials">
+        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40" data-testid="footer-gstin">
+          GSTIN: 24ACZPZ0645H1ZY
+        </p>
+        <div className="flex items-center gap-3">
+          <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-paper/35">Credentials</span>
+          <span className="inline-flex items-center border border-paper/10 bg-paper px-3 py-2" data-testid="footer-sgcci-logo">
+            <img src="/assets/sgcci-logo.png" alt="SGCCI — The Southern Gujarat Chamber of Commerce & Industry" className="h-6 w-auto" />
+          </span>
+          <span className="inline-flex items-center border border-paper/10 bg-paper px-3 py-2" data-testid="footer-msme-logo">
+            <img src="/assets/msme-logo.png" alt="Ministry of Micro, Small & Medium Enterprises, Government of India" className="h-6 w-auto" />
+          </span>
         </div>
       </div>
       <div className="flex flex-col gap-3 py-6 font-mono text-[10px] uppercase tracking-[0.2em] text-paper/40 md:flex-row md:items-center md:justify-between">

@@ -15,10 +15,10 @@ const WHY = [
 ];
 
 const META = [
-  ['EST.', '1990 — Surat'],
-  ['MOQ', 'From 150 m'],
-  ['Range', '3 constructions'],
-  ['Lanes', 'NP · BD · AE · UK +'],
+  ['EST.', '1990 · Surat'],
+  ['EXPERTISE', 'Velvet · Textiles · Sourcing'],
+  ['REACH', 'South Asia · Middle East · Europe +'],
+  ['BUSINESS', 'Manufacturing · Wholesale · Export'],
 ];
 
 const Home = () => {
