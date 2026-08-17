@@ -1,34 +1,42 @@
-# HemSambhav Impex — Export Website (FULLY STATIC since 2026-08-15)
+# HemSambhav Impex — Static Export Website PRD
 
-## Original Problem Statement
-Lead-generation website for HemSambhav Impex, the export division of Shree JK Handloom (JK Velvet), a Surat velvet manufacturer since 1990. Goal: get international bulk/export buyers to submit inquiries. Brand color navy #1A4C7D, tagline "Possibility to Prosperity". Pages: Home, About, Products, Gallery, Blog, Contact.
+## Original problem statement
+Premium B2B lead-generation website for HemSambhav Impex, the export division of Shree JK Handloom (JK Velvet), Surat. Goal: convert international bulk/export buyers into inquiries while presenting the house's velvet manufacturing authority. Brand color: navy `#1A4C7D`; tagline: `Possibility to Prosperity`.
 
-## CURRENT ARCHITECTURE (static)
-- React 19 SPA, NO backend, NO MongoDB, NO admin panel (all removed 2026-08-15 by user decision)
-- Static data: src/data/products.js (20 fabrics), src/data/posts.js (3 posts), src/data/gallery.js (13 tiles), src/data/catalog.js (categories, markets, shades, images, helpers, contact)
-- Static PDFs: public/pdfs/HemSambhav-ShadeCard-<slug>.pdf (20 files, pre-generated)
-- Contact form: FormSubmit AJAX → contact@hemsambhavimpex.com (NO key; first submission triggers a one-time activation email the owner must confirm)
-- SPA fallback configs: public/_redirects (Netlify/CF Pages) + vercel.json (Vercel)
-- Build: cd /app/frontend && yarn build → deploy /app/frontend/build to any static host
-- SEO: useSEO hook per page (title/description/OG), JSON-LD Organization in index.html
+## Current architecture
+- Fully static React 19 SPA; no backend, MongoDB, admin panel, authentication, CMS, or server runtime.
+- Public routes: Home, About, Products, Product Detail, Gallery, Blog, Blog Detail, Contact, branded 404.
+- Static data lives in `frontend/src/data/products.js` (20 products), `gallery.js`, `posts.js` (currently empty by user request), and `catalog.js`.
+- Static assets are local under `frontend/public/assets/`; fonts are self-hosted. No remote editorial images or font CDNs.
+- Contact form uses FormSubmit to `contact@hemsambhavimpex.com`; no API key or backend required.
+- WhatsApp and IndiaMART are external links only.
+- Hostinger/Apache SPA support: `frontend/public/.htaccess` is copied into `frontend/build/`; `_redirects` and `vercel.json` also exist for compatible static hosts.
+- Production build command: `cd /app/frontend && yarn build`. Deploy the **contents** of `frontend/build/`, including hidden `.htaccess`, into Hostinger `public_html`.
 
-## Content history (all preserved through static conversion)
-- Real JK Velvet photography (all 20 products), real mill specs incl. per-fabric MOQs (user-supplied), Brasso out of stock, "FD (Full Dull) Velvet" renamed to "Twilight", real founding story (Anil Doshi 1990 → velvet 2002 → JK Velvet brand 2015)
-- User deleted the "Why 250 Metre MOQ" blog post via admin before conversion — 3 posts remain
+## Implemented and current state
+- Premium editorial textile-export design using navy, paper, rust/gold accents, Cormorant Garamond, Cabinet Grotesk and IBM Plex Mono.
+- 20 real product entries with local product photography, specifications, categories, and quote links.
+- Visible category order: Weaving Velvet, Flocked Velvet, Raising Velvet.
+- Product detail pages show specifications and quote CTA; digital shade-card UI/download links were removed by user request. Old static shade-card PDFs may remain unlinked under `public/pdfs/`.
+- Blog listing/detail infrastructure remains, but the static post list is intentionally empty.
+- Footer includes parent-brand JK Velvet, IndiaMART, GSTIN, SGCCI and MSME credentials.
+- 2026-08-17: Added a five-page A4 portrait downloadable PDF brochure at `/assets/HemSambhav-Impex-Brochure.pdf` and a prominent gold `Download Brochure` button in the footer credentials row.
+- Brochure contents: cover; company/quality/export capability page; two featured-product pages with 8 products; global reach/contact page. Featured products: Coco Velvet, Galaxy Velvet, Korean Velvet, Non-Woven Velvet, Micro 11000 (Falcon Velvet), Micro 9000 Velvet, Holland Velvet, Raising Velvet.
 
-## Removed on 2026-08-15
-- /app/backend entirely (FastAPI, Motor/MongoDB, Resend code, JWT/bcrypt auth, admin CRUD, upload endpoint, PDF generator)
-- Admin panel (/admin route, Admin.jsx), axios, useProducts/usePosts/useGallery hooks
+## Verification
+- Latest production build completed successfully after the brochure/footer change.
+- Testing agent report: `/app/test_reports/iteration_1.json` — 100% frontend pass.
+- Verified: footer button visibility/attributes/accessibility, PDF HTTP 200 and `application/pdf`, valid PDF signature, exactly 5 A4 portrait pages, 8 products, GSTIN/email/phone/export markets, no console errors.
+- Brochure file size: about 1.35 MB; included in `frontend/build/assets/`.
 
-## Backlog
-- P1: Custom domain (hemsambhavimpex.com) + upload frontend/build to Hostinger Single public_html (user handles domain)
-- P1: Confirm FormSubmit activation email (test submissions sent 2026-08-15)
+## Credentials
+- No authentication or admin credentials exist. The site is fully static.
+- FormSubmit owner activation remains an external manual step.
 
-## Production readiness (2026-08-15)
-- public/.htaccess added: Apache SPA rewrite (deep links/refresh work on Hostinger), 1y asset caching, gzip, ErrorDocument 404 → index.html
-- Branded 404 page (src/pages/NotFound.jsx) replaced the Home catch-all
-- Mobile darkening fixed: Chrome Android auto-dark-theme was recoloring the page because no color-scheme was declared — added `<meta name="color-scheme" content="only light">` + `html { color-scheme: only light }`. Desktop untouched
-- Emergent-only scripts removed from index.html: emergent-main.js, PostHog analytics (ap.emergent.sh), DataCloneError preview patch
-- Verified on static serve of build/: all routes 200, 20/20 product pages, 3/3 posts, 404 page, mobile menu, FormSubmit success + mailto fallback, no console errors
-- SELF-CONTAINED (2026-08-15): all 23 editorial/stock images downloaded to public/assets/general/*.webp (~30-240 KB each, quality preserved), all fonts self-hosted in public/assets/fonts/ (15 woff2: Cormorant Garamond, IBM Plex Mono, Cabinet Grotesk) via public/assets/fonts/fonts.css linked in index.html (font preloads added, Google/Fontshare CDN references removed), og:image now points to production-domain local asset. posts.js checked: valid JS (JSON-generated), no fix needed. External requests on full page load: ZERO (only allowed functional services remain: FormSubmit, wa.me, jkvelvet.com link, mailto)
-- Build: `cd frontend && yarn build` → deploy frontend/build/ (8.6 MB: 20 PDFs, 20 product photos, hashed bundles)
+## Prioritized backlog
+- P0: User uploads the contents of `frontend/build/` to Hostinger `public_html` when ready.
+- P0: User confirms FormSubmit activation email and sends one live test inquiry from the deployed domain.
+- P1: User reviews the generated brochure wording/product selection and requests any content revisions.
+- P1: Decide whether to delete the 20 now-unlinked shade-card PDFs from `frontend/public/pdfs/` before final upload.
+- P2: Add future blog articles to `frontend/src/data/posts.js` when the user supplies approved content.
+- P2: Final SEO/content review only if explicitly requested; do not create sitemap.xml or robots.txt without user approval.

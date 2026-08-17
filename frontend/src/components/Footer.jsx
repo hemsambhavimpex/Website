@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Download } from 'lucide-react';
 import { CONTACT, CATEGORIES } from '../data/catalog';
 
 const GOLD = '#C9A24B';
@@ -85,6 +85,18 @@ export const Footer = () => (
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-paper/40" data-testid="footer-gstin">
           <span style={{ color: GOLD }}>GSTIN:</span> 24ACZPZ0645H1ZY
         </p>
+        <a
+          href="/assets/HemSambhav-Impex-Brochure.pdf"
+          download="HemSambhav-Impex-Brochure.pdf"
+          type="application/pdf"
+          data-testid="footer-download-brochure-button"
+          aria-label="Download HemSambhav Impex product brochure PDF"
+          className="group inline-flex w-fit items-center gap-3 border px-7 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-navy-ink transition-colors duration-300 hover:bg-transparent hover:text-paper"
+          style={{ borderColor: GOLD, backgroundColor: GOLD }}
+        >
+          <Download size={14} className="transition-transform duration-300 group-hover:translate-y-0.5" />
+          Download Brochure
+        </a>
         <div className="flex flex-col gap-3 md:items-end">
           <span className="font-mono text-[9px] uppercase tracking-[0.22em]" style={{ color: GOLD }}>Credentials</span>
           <div className="flex flex-wrap items-center gap-4">
