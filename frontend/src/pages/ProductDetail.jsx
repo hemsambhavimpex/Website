@@ -1,8 +1,8 @@
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeft, ArrowUpRight, Download, MessageSquare } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight, MessageSquare } from 'lucide-react';
 import { MaskedLines, Reveal } from '../components/Reveal';
 import { PRODUCTS } from '../data/products';
-import { CATEGORIES, SPECS_BY_CAT, SHADE_CARD, CONTACT, productImage } from '../data/catalog';
+import { CATEGORIES, SPECS_BY_CAT, CONTACT, productImage } from '../data/catalog';
 import { useSEO } from '../hooks/useSEO';
 
 const ProductDetail = () => {
@@ -23,7 +23,6 @@ const ProductDetail = () => {
   }
 
   const cat = CATEGORIES.find((c) => c.id === product.cat);
-  const shades = product.shades?.length ? product.shades.map((s) => [s.name, s.hex]) : SHADE_CARD;
   const base = SPECS_BY_CAT[product.cat];
   const specs = product.specs || {};
   const specRows = [
@@ -81,38 +80,6 @@ const ProductDetail = () => {
                 <span>Fig. 01 — {product.name}</span>
                 <span>Lot / HS-{cat.code}</span>
               </p>
-            </Reveal>
-
-            <Reveal delay={0.1}>
-              <div className="mt-12 border border-navy/20 bg-surface p-7" data-testid="shade-card">
-                <div className="flex items-baseline justify-between">
-                  <h3 className="font-serif text-2xl text-navy-dark">Digital Shade Card</h3>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-navy/50">
-                    {product.shades?.length ? 'Mill range' : 'Indicative'}
-                  </span>
-                </div>
-                <div className="mt-5 grid grid-cols-4 gap-px border border-navy/15 bg-navy/15 sm:grid-cols-6">
-                  {shades.map(([name, hex], i) => (
-                    <div key={name} className="group bg-surface" data-testid={`shade-${i + 1}`}>
-                      <div className="aspect-square transition-transform duration-300 group-hover:scale-[1.04]" style={{ backgroundColor: hex }} />
-                      <p className="px-2 pt-1.5 font-mono text-[9px] uppercase tracking-[0.12em] text-navy/70">HS-{String(i + 1).padStart(2, '0')}</p>
-                      <p className="truncate px-2 pb-1.5 text-[11px] text-navy-dark/70">{name}</p>
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-4 text-xs leading-relaxed text-navy-dark/60">
-                  Screen shades are indicative only — a physical shade card is couriered on
-                  request before order confirmation.
-                </p>
-                <a
-                  href={`/pdfs/HemSambhav-ShadeCard-${product.slug}.pdf`}
-                  download
-                  className="btn-secondary group mt-6 w-full justify-center"
-                  data-testid="shade-card-download"
-                >
-                  <Download size={14} /> Download Printable Shade Card (PDF)
-                </a>
-              </div>
             </Reveal>
           </div>
 
