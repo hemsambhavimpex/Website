@@ -34,7 +34,7 @@ export const CATEGORIES = [
     code: 'WVN',
     description:
       'Loom-woven pile constructions with depth, drape and durability for upholstery, apparel and furnishing.',
-    image: '/assets/products/micro-11000-falcon.jpg',
+    image: '/assets/products/micro-11000-falcon-cover.webp',
   },
   {
     id: 'flocked',
@@ -42,7 +42,7 @@ export const CATEGORIES = [
     code: 'FLK',
     description:
       'Electrostatically flocked pile on fabric, non-woven and PVC bases — the workhorse of box-making, footwear and décor.',
-    image: '/assets/products/galaxy-velvet.jpg',
+    image: '/assets/products/galaxy-velvet-cover.webp',
   },
   {
     id: 'knitting',
@@ -50,7 +50,7 @@ export const CATEGORIES = [
     code: 'RSG',
     description:
       'Raised-pile knitted velvets with deep, sculptural texture for apparel and furnishing.',
-    image: '/assets/products/raising-velvet.jpg',
+    image: '/assets/products/raising-velvet-cover.webp',
   },
 ];
 
@@ -107,11 +107,25 @@ export const SHADE_CARD = [
   ['Rosewood', '#7A3B3B'], ['Teal', '#14505C'], ['Jet Black', '#111111'],
 ];
 
-// Photos: local /assets/products/<slug>.jpg files
+// Photos: local /assets/products/ files unless a full path is supplied
+const resolveProductImage = (value) => {
+  if (!value) return null;
+  if (value.startsWith('/') || value.startsWith('http')) return value;
+  return `/assets/products/${value}`;
+};
+
+export const productImages = (p) => {
+  const source = Array.isArray(p.images) && p.images.length ? p.images : [p.photo];
+  const images = [...new Set(source.map(resolveProductImage).filter(Boolean))];
+  const contextImage = IMAGES[p.img];
+  if (contextImage && !images.includes(contextImage)) images.push(contextImage);
+  return images.length ? images : [IMAGES.fabricRack];
+};
+
 export const productImage = (p) => {
-  if (!p.photo) return IMAGES[p.img] || IMAGES.fabricRack;
-  if (p.photo.startsWith('/') || p.photo.startsWith('http')) return p.photo;
-  return `/assets/products/${p.photo}`;
+  const images = productImages(p);
+  const coverIndex = Number.isInteger(p.coverIndex) ? p.coverIndex : 0;
+  return images[coverIndex] || images[0];
 };
 
 export const postImage = (p) =>

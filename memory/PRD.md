@@ -16,6 +16,9 @@ Premium B2B lead-generation website for HemSambhav Impex, the export division of
 ## Implemented and current state
 - Premium editorial textile-export design using navy, paper, rust/gold accents, Cormorant Garamond, Cabinet Grotesk and IBM Plex Mono.
 - 20 real product entries with local product photography, specifications, categories, and quote links.
+- 2026-08-17: Product catalog supports multiple images per product. Each product currently has a JK Velvet cover image plus its existing local application/context image as the second view; `coverIndex` selects the cover without touching product data.
+- Product display order is Weaving Velvet → Flocked Velvet → Raising Velvet across products, related lists, category cards and gallery tiles.
+- Product detail pages use a large main image with an accessible thumbnail strip; the strip becomes horizontally scrollable when more than four images are added.
 - Visible category order: Weaving Velvet, Flocked Velvet, Raising Velvet.
 - Product detail pages show specifications and quote CTA; digital shade-card UI/download links were removed by user request. Old static shade-card PDFs may remain unlinked under `public/pdfs/`.
 - Blog listing/detail infrastructure remains, but the static post list is intentionally empty.
@@ -25,7 +28,8 @@ Premium B2B lead-generation website for HemSambhav Impex, the export division of
 
 ## Verification
 - Latest production build completed successfully after the brochure/footer change.
-- Testing agent report: `/app/test_reports/iteration_1.json` — 100% frontend pass.
+- Testing agent report: `/app/test_reports/iteration_1.json` — 100% frontend pass for the brochure.
+- Testing agent report: `/app/test_reports/iteration_2.json` — 100% frontend pass for multi-image product support, cover selection, category ordering, all 20 cover assets, desktop/mobile thumbnails and no console errors.
 - Verified: footer button visibility/attributes/accessibility, PDF HTTP 200 and `application/pdf`, valid PDF signature, exactly 5 A4 portrait pages, 8 products, GSTIN/email/phone/export markets, no console errors.
 - Brochure file size: about 1.35 MB; included in `frontend/build/assets/`.
 
@@ -37,6 +41,7 @@ Premium B2B lead-generation website for HemSambhav Impex, the export division of
 - P0: User uploads the contents of `frontend/build/` to Hostinger `public_html` when ready.
 - P0: User confirms FormSubmit activation email and sends one live test inquiry from the deployed domain.
 - P1: User reviews the generated brochure wording/product selection and requests any content revisions.
+- P1: Add each product's full 5+ photo set when the user supplies or approves the additional images.
 - P1: Decide whether to delete the 20 now-unlinked shade-card PDFs from `frontend/public/pdfs/` before final upload.
 - P2: Add future blog articles to `frontend/src/data/posts.js` when the user supplies approved content.
 - P2: Final SEO/content review only if explicitly requested; do not create sitemap.xml or robots.txt without user approval.
