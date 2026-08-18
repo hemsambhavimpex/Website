@@ -19,6 +19,7 @@ Premium B2B lead-generation website for HemSambhav Impex, the export division of
 - 2026-08-17: Product catalog supports multiple images per product. Each product currently has a JK Velvet cover image plus its existing local application/context image as the second view; `coverIndex` selects the cover without touching product data.
 - Product display order is Weaving Velvet → Flocked Velvet → Raising Velvet across products, related lists, category cards and gallery tiles.
 - Product detail pages use a large main image with an accessible thumbnail strip; the strip becomes horizontally scrollable when more than four images are added.
+- 2026-08-17: Added a fullscreen tap-to-zoom viewer with 100–320% zoom, drag/pan inspection, reset, previous/next controls, modal thumbnails, keyboard support and mobile-safe layout.
 - Visible category order: Weaving Velvet, Flocked Velvet, Raising Velvet.
 - Product detail pages show specifications and quote CTA; digital shade-card UI/download links were removed by user request. Old static shade-card PDFs may remain unlinked under `public/pdfs/`.
 - Blog listing/detail infrastructure remains, but the static post list is intentionally empty.
@@ -30,6 +31,7 @@ Premium B2B lead-generation website for HemSambhav Impex, the export division of
 - Latest production build completed successfully after the brochure/footer change.
 - Testing agent report: `/app/test_reports/iteration_1.json` — 100% frontend pass for the brochure.
 - Testing agent report: `/app/test_reports/iteration_2.json` — 100% frontend pass for multi-image product support, cover selection, category ordering, all 20 cover assets, desktop/mobile thumbnails and no console errors.
+- Testing agent report: `/app/test_reports/iteration_3.json` — 100% frontend pass for zoom modal open/close, focus, body scroll restore, zoom controls, drag/pan, double-click, image navigation/reset, Escape and mobile layout.
 - Verified: footer button visibility/attributes/accessibility, PDF HTTP 200 and `application/pdf`, valid PDF signature, exactly 5 A4 portrait pages, 8 products, GSTIN/email/phone/export markets, no console errors.
 - Brochure file size: about 1.35 MB; included in `frontend/build/assets/`.
 

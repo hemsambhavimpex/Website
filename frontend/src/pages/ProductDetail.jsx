@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowUpRight, MessageSquare } from 'lucide-react';
 import { MaskedLines, Reveal } from '../components/Reveal';
+import { ProductImageViewer } from '../components/ProductImageViewer';
 import { PRODUCTS } from '../data/products';
 import { CATEGORIES, SPECS_BY_CAT, CONTACT, productImage, productImages } from '../data/catalog';
 import { useSEO } from '../hooks/useSEO';
@@ -9,11 +9,6 @@ import { useSEO } from '../hooks/useSEO';
 const ProductDetail = () => {
   const { slug } = useParams();
   const product = PRODUCTS.find((p) => p.slug === slug);
-  const [activeImage, setActiveImage] = useState(0);
-
-  useEffect(() => {
-    setActiveImage(product?.coverIndex || 0);
-  }, [slug, product?.coverIndex]);
 
   useSEO(
     product ? `${product.name} — ${product.variants || 'Velvet'} Export | HemSambhav Impex` : 'Fabric Not Found | HemSambhav Impex',
@@ -46,7 +41,6 @@ const ProductDetail = () => {
   ].filter(Boolean);
   const related = PRODUCTS.filter((p) => p.cat === product.cat && p.slug !== product.slug).slice(0, 3);
   const images = productImages(product);
-  const selectedImage = Math.min(activeImage, images.length - 1);
   const waText = encodeURIComponent(`Hello HemSambhav Impex — I’d like a quote for ${product.name} (${cat.name}). Quantity: `);
 
   return (
@@ -81,40 +75,12 @@ const ProductDetail = () => {
         <div className="mx-auto grid max-w-[1600px] gap-14 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <Reveal>
-              <div data-testid="product-image-viewer">
-                <div className="img-frame aspect-[4/3] border border-navy/20" data-testid="product-detail-image">
-                  <img src={images[selectedImage]} alt={`${product.name} — view ${selectedImage + 1}`} data-testid="product-main-image" />
-                  <div className="absolute inset-0 bg-navy/15 mix-blend-multiply" />
-                </div>
-                <p className="mt-3 flex justify-between font-mono text-[10px] uppercase tracking-[0.22em] text-navy/60">
-                  <span data-testid="product-image-caption">Fig. {String(selectedImage + 1).padStart(2, '0')} — {product.name}</span>
-                  <span data-testid="product-image-count">Lot / HS-{cat.code} · {String(selectedImage + 1).padStart(2, '0')}/{String(images.length).padStart(2, '0')}</span>
-                </p>
-                {images.length > 1 && (
-                  <div
-                    className={images.length > 4 ? 'mt-4 flex gap-3 overflow-x-auto pb-1' : 'mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4'}
-                    data-testid="product-image-thumbnails"
-                  >
-                    {images.map((src, index) => (
-                      <button
-                        key={src}
-                        type="button"
-                        onClick={() => setActiveImage(index)}
-                        aria-label={`View ${product.name} image ${index + 1}`}
-                        aria-pressed={selectedImage === index}
-                        data-testid={`product-thumbnail-${product.slug}-${index + 1}`}
-                        className={`img-frame aspect-[4/3] border p-0 text-left transition-opacity duration-300 ${
-                          images.length > 4 ? 'w-24 shrink-0 sm:w-28 ' : ''
-                        }${
-                          selectedImage === index ? 'border-rust' : 'border-navy/20 opacity-65 hover:opacity-100'
-                        }`}
-                      >
-                        <img src={src} alt="" loading="lazy" />
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
+              <ProductImageViewer
+                product={product}
+                images={images}
+                coverIndex={product.coverIndex || 0}
+                categoryCode={cat.code}
+              />
             </Reveal>
           </div>
 
